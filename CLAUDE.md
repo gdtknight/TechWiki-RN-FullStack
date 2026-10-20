@@ -1,4 +1,4 @@
-# CLAUDE.md — TechWiki Schema & Operations Guide
+# CLAUDE.md — TechWiki-RN-FullStack Schema & Operations Guide
 
 이 문서는 **LLM Wiki 패턴**의 3계층 중 **Schema(스키마)** 계층이다.
 LLM 에이전트(Claude Code, Codex, Antigravity 등)는 이 볼트에서 작업할 때 반드시 이 문서의 규칙과 워크플로우를 따른다.
@@ -19,7 +19,7 @@ LLM 에이전트(Claude Code, Codex, Antigravity 등)는 이 볼트에서 작업
      - 도서(출간 시점의 한계)의 구버전 서술을 보정하고 최신 릴리스 및 아키텍처 규격을 반영하는 제3의 공식 원천 소스로 활용한다.
    - 원천 PDF 및 EPUB은 절대 수정하거나 이동하지 않는다 (MarginNote 4 파일 관리와 태그는 `mn4-librarian` 전용).
 2. **The Wiki (지식 베이스 — LLM 전담 유지보수)**
-   - 경로: `/Users/yoshin/Documents/TechWiki` (실제 위치: Obsidian iCloud `.../iCloud~md~obsidian/Documents/TechWiki`)
+   - 경로: `/Users/yoshin/Documents/TechWiki-RN-FullStack` (실제 위치: Obsidian iCloud `.../iCloud~md~obsidian/Documents/TechWiki-RN-FullStack`)
    - LLM이 모든 마크다운 문서를 생성·갱신·교차참조(`[[위키링크]]`)하며, 사용자는 Obsidian에서 탐색 및 그래프 뷰로 열람한다.
 3. **The Schema (규칙 및 워크플로우)**
    - 경로: `CLAUDE.md` (및 `AGENTS.md` 심볼릭 링크)
@@ -29,7 +29,7 @@ LLM 에이전트(Claude Code, Codex, Antigravity 등)는 이 볼트에서 작업
 ## 2. 디렉토리 구조
 
 ```text
-TechWiki/
+TechWiki-RN-FullStack/
 ├── CLAUDE.md          # 위키 스키마 및 에이전트 운영 지침 (AGENTS.md 심볼릭 링크)
 ├── index.md           # 전체 위키 콘텐츠 카탈로그 (Ingest/Query/Lint 시 항상 갱신)
 ├── log.md             # 시간순 작업 로그 (append-only, grep 파싱 가능 형식)

@@ -1,4 +1,4 @@
-# TechWiki Activity Log
+# TechWiki-RN-FullStack Activity Log
 
 시간순으로 기록되는 위키 작업 로그(append-only)입니다.
 각 항목은 `## [YYYY-MM-DD] <operation> | <title>` 형식을 따르므로 `grep "^## \[" log.md | tail -5` 등으로 최근 이력을 빠르게 조회할 수 있습니다.
@@ -228,3 +228,12 @@
   - [[2026-React Native Official Documentation]] (관련 공식 소스로 Expo 문서 상호 연결)
   - `CLAUDE.md`, `index.md` (공식 웹 기술 문서 목록에 `docs.expo.dev` 반영)
 - **인덱스 갱신**: `index.md`에 신규 1개 페이지(누적 70개 위키 페이지: Sources 34개, Concepts 24개, Entities 9개, Syntheses 3개) 등록 완료.
+
+## [2026-10-21] schema | 위키 볼트 리네이밍: TechWiki -> TechWiki-RN-FullStack
+- **배경 및 목적**:
+  - 본 위키의 본래 목적인 **"React Native 기반 iOS/Android 크로스플랫폼 앱 개발"** 및 이를 프로덕션으로 배포하기 위해 확장된 **풀스택(TypeScript, Node.js, Next.js, Prisma, PostgreSQL, Docker/K8s, CI/CD, 관측성, AI 에이전트)** 영역을 명확히 명시.
+  - 향후 신설될 Java/Spring/Enterprise 백엔드 전용 위키(`TechWiki-Java-Backend`)와의 명확한 대칭성 확보.
+- **경로 및 심볼릭 링크 갱신**:
+  - 실제 iCloud 볼트 디렉터리: `/Users/yoshin/Library/Mobile Documents/iCloud~md~obsidian/Documents/TechWiki-RN-FullStack`
+  - 로컬 심볼릭 링크: `/Users/yoshin/Documents/TechWiki-RN-FullStack` (기존 `/Users/yoshin/Documents/TechWiki`는 하위 호환성을 위해 새 경로 심볼릭 링크 유지)
+- **문서 갱신**: `CLAUDE.md`, `index.md`, `log.md` 내부 경로 및 타이틀 정규화 완료.

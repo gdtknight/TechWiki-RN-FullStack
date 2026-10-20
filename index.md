@@ -1,6 +1,6 @@
-# TechWiki Index
+# TechWiki-RN-FullStack Index
 
-이 파일은 **TechWiki**의 전체 문서를 안내하는 콘텐츠 중심 카탈로그(`index.md`)입니다.
+이 파일은 **TechWiki-RN-FullStack**(React Native 모바일 크로스플랫폼 앱 & 풀스택 엔지니어링 지식 베이스)의 전체 문서를 안내하는 콘텐츠 중심 카탈로그(`index.md`)입니다.
 LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를 먼저 읽고 최신 상태로 유지합니다.
 
 - **원천 라이브러리 (Raw Sources)**:
