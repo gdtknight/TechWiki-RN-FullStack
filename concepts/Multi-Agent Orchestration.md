@@ -33,7 +33,7 @@ updated: 2026-10-18
 ### 2. 탈중앙화 스웜 아키텍처 (Swarm Architecture, p.200)
 - 중앙 감독자 없이 각 에이전트가 로컬 정책(Local policies)과 이웃 에이전트와의 신호 교환만으로 자기조직화(Self-organization)하는 패턴이다.
 - **장점**:
-  - **확장성(Scalability)**: 느슨한 결합(Loose coupling) 덕분에 조율 오버헤드 없이 수백~수천 개 에이전트로 확장 가능.
+  - **확장성(Scalability)**: 느슨한 결합(Loose coupling) 덕분에 조율 오버헤드 없이 수백–수천 개 에이전트로 확장 가능.
   - **강건성(Robustness)**: 단일 장애점(SPOF)이 없어 개별 에이전트가 실패해도 전체 시스템이 유지됨.
 
 ### 3. 분산 시스템 인프라와의 결합 (p.214–223)

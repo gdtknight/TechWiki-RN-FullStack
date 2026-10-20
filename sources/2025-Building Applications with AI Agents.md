@@ -16,6 +16,7 @@ tags:
   - memory
   - graphrag
   - multi-agent
+sources: ["[[2025-Building Applications with AI Agents]]"]
 created: 2026-10-18
 updated: 2026-10-18
 ---
@@ -38,7 +39,7 @@ updated: 2026-10-18
 
 ## 챕터별 핵심 내용 요약
 
-### Part I: 기초와 시스템 설계 (Ch 1 ~ Ch 3)
+### Part I: 기초와 시스템 설계 (Ch 1 – Ch 3)
 - **Ch 1. Introduction to Agents (p.23–37)**
   - **에이전트 정의**: 환경을 인식하고, 목표 달성을 위해 의사결정을 내리며, 도구 호출을 통해 외부 환경에 작용하는 자율/반자율 시스템.
   - **결정론적 워크플로우(Workflows) vs 에이전트(Agents) (p.30)**: 사전에 고정된 경로를 따르는 워크플로우와 달리, 에이전트는 런타임에 실행 경로와 도구 호출 순서를 동적으로 결정한다.
@@ -51,7 +52,7 @@ updated: 2026-10-18
   - 텍스트·GUI·음성·비디오 멀티모달 인터랙션과 **자율성 슬라이더(The Autonomy Slider, p.77)**: 작업의 위험도와 사용자의 신뢰 수준에 따라 에이전트의 자율성 범위를 조절하는 UX 패턴.
   - 동기(Synchronous) vs 비동기(Asynchronous) 에이전트 경험 설계 및 불확실성/신뢰도 전달 방식 (p.80–88).
 
-### Part II: 도구, 오케스트레이션, 메모리, 학습 (Ch 4 ~ Ch 7)
+### Part II: 도구, 오케스트레이션, 메모리, 학습 (Ch 4 – Ch 7)
 - **Ch 4. Tool Use (p.93–110)**
   - 로컬 도구, API 기반 도구, [[Model Context Protocol (MCP)]] 기반 도구 설계 및 자동화된 도구 개발(Automated Tool Development).
 - **Ch 5. Orchestration (p.111–135)**
@@ -63,12 +64,12 @@ updated: 2026-10-18
 - **Ch 7. Learning in Agentic Systems (p.157–184)**
   - 가중치 수정 없이 프롬프트·메모리·리플렉션(Reflexion)·경험 축적으로 성능을 높이는 **비모수 학습(Nonparametric Learning)** 과 SFT/RLHF/PEFT/DPO 기반의 **모수 학습(Parametric Learning)** 비교.
 
-### Part III: 멀티에이전트와 프로덕션 운영 (Ch 8 ~ Ch 13)
+### Part III: 멀티에이전트와 프로덕션 운영 (Ch 8 – Ch 13)
 - **Ch 8. From One Agent to Many (p.185–224)**
   - 모놀리스에서 마이크로서비스로 분리하듯, 도구 수와 문제 영역이 커질 때 단일 에이전트를 멀티에이전트로 분할하는 기준 (p.185).
   - 중앙집중형 감독자(Supervisor) 패턴 vs 탈중앙화 자율 조직인 **스웜(Swarm) 아키텍처 (p.200)**.
   - 메시지 브로커/이벤트 버스(p.214), 액터 프레임워크(Ray, Orleans, Akka, p.217), Meta-Agent Search(p.206).
-- **Ch 9 ~ Ch 11. Validation, Monitoring, Improvement Loops (p.227–290)**
+- **Ch 9 – Ch 11. Validation, Monitoring, Improvement Loops (p.227–290)**
   - 컴포넌트 단위 평가와 엔드투엔드 평가(Ch 9), OpenTelemetry(OTel) 계측과 분포 이동(Distribution Shift) 감지(Ch 10), 피드백 파이프라인과 실험 루프(Ch 11).
 - **Ch 12. Protecting Agentic Systems (p.293–318)**
   - 프롬프트 인젝션, 멀티에이전트 메모리 포이즈닝(Memory Poisoning), 권한 상승 등 에이전트 고유의 보안 위협과 방어 계층(Guardrails, 샌드박싱, 최소 권한 원칙).

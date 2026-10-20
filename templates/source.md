@@ -8,6 +8,7 @@ category: "{{major_category}}/{{minor_category}}"
 pdf_path: "{{pdf_path}}"
 status: ingested
 tags: []
+sources: ["[[{{year}}-{{title}}]]"]
 created: {{date}}
 updated: {{date}}
 ---
@@ -20,7 +21,7 @@ updated: {{date}}
 
 ## 핵심 요약 (Core Thesis)
 
-- 이 책이 해결하려는 핵심 문제와 핵심 주장을 3~5문장으로 요약합니다.
+- 이 책이 해결하려는 핵심 문제와 핵심 주장을 3–5문장으로 요약합니다.
 
 ## 주요 챕터 및 구조
 
