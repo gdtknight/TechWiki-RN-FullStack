@@ -19,7 +19,7 @@ tags:
   - dom
 sources: ["[[2021-JavaScript from Beginner to Professional]]"]
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # JavaScript from Beginner to Professional (2021)
@@ -73,3 +73,6 @@ updated: 2026-10-19
 
 ### Entities
 - [[JavaScript (ECMAScript)]] — ES6+ 표준 문법 및 내장 메서드 체계
+
+### Syntheses (이 책을 주 교재로 한 입문 레슨)
+- [[JS 첫걸음 00 - 로드맵]] — 레슨 01–05 작성 완료: [[JS 첫걸음 01 - 프로그램과 콘솔|01]] (Ch 1), [[JS 첫걸음 02 - 변수|02]]·[[JS 첫걸음 03 - 자료형|03]]·[[JS 첫걸음 04 - 연산자|04]] (Ch 2), [[JS 첫걸음 05 - 조건문|05]] (Ch 4). 각 레슨의 "관점 비교" 절에 이 책과 현재 MDN 기준의 차이를 기록함 (예: p.29 "interpreted", p.30 "current standard is ES6", p.44 "var has global scope", p.49 Number 범위, p.63 우선순위 표, p.98 인쇄 오류).

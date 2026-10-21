@@ -52,6 +52,7 @@ JavaScript 코드는 실행되는 플랫폼에 따라 서로 다른 가상 머�
 
 ## 관련 링크
 
+- **입문 레슨**: [[JS 첫걸음 00 - 로드맵]] (프로그래밍을 처음 배우는 사람을 위한 기초 시리즈)
 - **연관 개념**: [[JavaScript Core Syntax and Modern ES6+ Fundamentals]], [[JavaScript Execution Context, Closures, and Prototype]], [[JavaScript Event Loop and Asynchronous Patterns]], [[React Native Architecture (Bridge to New Architecture)]]
 - **연관 엔티티**: [[TypeScript]], [[React]], [[React Native]]
 - **출처 문헌**: [[2015-인사이드 자바스크립트]], [[2021-JavaScript from Beginner to Professional]], [[2021-JavaScript Cookbook 3e]], [[2022-자바스크립트로 배우는 SICP]], [[2024-JavaScript Design Patterns]], [[2022-React and React Native, Fourth Edition]] (p.314), [[2026-Clean Code with TypeScript]] (p.121–126)

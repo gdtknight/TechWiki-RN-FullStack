@@ -19,7 +19,7 @@ tags:
   - es-modules
   - full-stack
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # JavaScript Core Syntax and Modern ES6+ Fundamentals
@@ -88,7 +88,7 @@ console.log(myName);    // ✅ "Kim"
 
 | 키워드 | 스코프(유효 범위) | 재할당 | 중복 선언 | 호이스팅 및 TDZ | 풀스택 실무 규칙 |
 |---|---|---|---|---|---|
-| **`const`** | 블록 스코프 (`{ ... }`) | **불가** (단, 객체 내부 속성 변경은 가능) | 불가 | TDZ 적용 (선언 전 접근 시 `ReferenceError`) | **기본값(95% 이상 사용)**. 참조가 바뀌지 않음을 보장. |
+| **`const`** | 블록 스코프 (`{ ... }`) | **불가** (단, 객체 내부 속성 변경은 가능) | 불가 | TDZ 적용 (선언 전 접근 시 `ReferenceError`) | **기본값으로 사용** (판단: 재할당이 필요 없는 변수는 `const`). 참조가 바뀌지 않음을 보장. |
 | **`let`** | 블록 스코프 (`{ ... }`) | **가능** | 불가 | TDZ 적용 | 루프 카운터나 조건부 재할당이 필요한 경우에만 제한 사용. |
 | **`var`** | 함수 스코프 (`function`) | 가능 | 가능 (버그 원인) | 선언 전 접근 시 `undefined` 반환 | **모던 코드에서 절대 사용 금지**. `if`/`for` 블록을 뚫고 새어 나감. |
 
@@ -124,16 +124,17 @@ user.role = "admin"; // ✅ 가능 (힙 메모리의 같은 객체를 수정함 
 - **`==` (추상 동등 비교)**: 타입을 암묵적으로 강제 변환(Type Coercion)한 뒤 비교하여 `0 == ""` (`true`), `false == "0"` (`true`), `null == undefined` (`true`) 같은 예측 불가능한 버그를 만든다 ([[2015-인사이드 자바스크립트]], p.34).
 - **`===` (엄격 동등 비교)**: **타입과 값이 모두 일치할 때만 `true`** 를 반환한다 (`0 === ""` $\rightarrow$ `false`).
 
-### 2.2 Falsy 값 6종과 React/React Native 렌더링 함정
-JavaScript 조건문(`if`, `&&`, `? :`)에서 **`false`로 평가되는 값(Falsy)은 딱 6가지**뿐이며, 빈 배열(`[]`)과 빈 객체(`{}`)를 포함한 **나머지 모든 값은 Truthy(`true`)** 다:
-- **6대 Falsy 값**: `false`, `0` (및 `-0`, `0n`), `""` (빈 문자열), `null`, `undefined`, `NaN`
+### 2.2 Falsy 값과 React/React Native 렌더링 함정
+JavaScript 조건문(`if`, `&&`, `? :`)에서 **`false`로 평가되는 값(Falsy)** 은 정해져 있으며, 빈 배열(`[]`)과 빈 객체(`{}`)를 포함한 **나머지 값은 Truthy(`true`)** 다:
+- **실무에서 만나는 Falsy 값 6종**: `false`, `0`, `""` (빈 문자열), `null`, `undefined`, `NaN`
+- **MDN 전체 목록 (9개)**: 위 6종 + `-0`, `0n`, `document.all` ([MDN, *Falsy*](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)). 입문용 설명은 [[JS 첫걸음 03 - 자료형]] 6.4절.
 - **주의! Truthy인 값**: `[]` (빈 배열), `{}` (빈 객체), `"0"` (문자열 0), `"false"`
 
 > [!WARNING]
 > **React / React Native에서 가장 흔한 `&&` 단축 평가 버그**
 > `count && <CartBadge count={count} />` 처럼 작성하면, `count`가 `0`일 때 `&&` 연산자가 Falsy 값인 숫자 `0`을 그대로 반환한다.
 > - 웹 [[React]]에서는 화면에 원치 않는 문자 `"0"`이 그대로 출력된다.
-> - 모바일 **[[React Native]]에서는 `<Text>` 바깥에 숫자 `0`이 렌더링되었다고 판단하여 앱이 즉시 크래시(`Text strings must be rendered within a <Text> component`)** 난다!
+> - 모바일 **[[React Native]]에서는 `<Text>` 바깥에 텍스트 노드를 둘 수 없다.** 공식 문서: "you must wrap all the text nodes inside of a `<Text>` component. You cannot have a text node directly under a `<View>`."이며, 예제 주석에 "will raise exception"이라고 적혀 있다 ([reactnative.dev/docs/text](https://reactnative.dev/docs/text)). `&&`가 돌려준 `0`이 `<View>` 바로 아래에 놓이면 이 경우에 해당한다 (판단). 이때 나오는 정확한 에러 문구는 공식 문서에 없어 미확인이다 (확인 방법: RN 앱에서 `<View>{0 && <Text />}</View>`를 렌더링해 본다).
 > - **해결책**: 반드시 **`count > 0 && <CartBadge count={count} />`** 또는 삼항 연산자(`count ? <CartBadge /> : null`)로 명확한 불리언을 만들어야 한다.
 
 ### 2.3 옵셔널 체이닝(`?.`)과 널 병합 연산자(`??`)
@@ -281,6 +282,7 @@ export class HttpError extends Error {
 
 ## 관련 개념 및 엔티티
 
+- **선행 학습 (입문자용)**: [[JS 첫걸음 00 - 로드맵]] — 이 페이지의 낱말(스코프, TDZ, falsy 등)이 낯설다면 먼저 보는 쉬운 레슨 시리즈
 - **다음 단계 학습**: [[TypeScript Core Syntax and Full-Stack Type Annotations]], [[JavaScript Execution Context, Closures, and Prototype]], [[JavaScript Event Loop and Asynchronous Patterns]]
 - **구현 기술/엔티티**: [[JavaScript (ECMAScript)]], [[TypeScript]], [[React]], [[React Native]]
 - **출처 문헌**: [[2021-JavaScript from Beginner to Professional]] (Ch 2–8, Ch 12), [[2015-인사이드 자바스크립트]] (Ch 2–4), [[2021-JavaScript Cookbook 3e]] (Ch 2–8), [[2026-Full-Stack React TypeScript and Node 2nd Edition]] (Ch 3), MDN Web Docs (`developer.mozilla.org`)

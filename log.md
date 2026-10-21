@@ -313,3 +313,17 @@
   - p.98의 "이퀄 두 개(`==`)를 쓰라"는 권고 → 이 시리즈는 `===`
   - p.101 삼항 연산자로 실행 코드를 고르는 예 → 이 시리즈는 값 고르기에만 씀 (판단)
 - **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 05 작성 완료), [[JS 첫걸음 04 - 연산자]](다음 레슨 링크), `index.md` Syntheses 섹션.
+
+## [2026-10-21] lint | 전체 76개 페이지 점검 (JS 첫걸음 레슨 00–05 추가 이후)
+- **링크 무결성**: 깨진 위키링크 0건, 고아 페이지 0건, 아웃바운드 링크 없는 페이지 0건. 표 열 수 불일치 0건.
+- **Index 동기화**: 실제 파일 76개(Sources 34, Concepts 24, Entities 9, Syntheses 9)와 `index.md`가 100% 일치하고, 섹션 배치 오류도 없음.
+- **프론트매터**: 공통 필수 필드 누락 0건, `pdf_path`·`epub_path` 경로 모두 실존. 물결표(`~`) 본문 위반 0건.
+- **레슨 간 절 참조**: "레슨 NN의 N.N절" 형태의 참조 11건이 모두 실제 제목과 일치함.
+- **모순/근거 부족 서술 교정 ([[JavaScript Core Syntax and Modern ES6+ Fundamentals]])**:
+  - 2.2절 "Falsy는 딱 6가지" → 실무 6종과 MDN 전체 목록 9개(`-0`, `0n`, `document.all` 포함)로 구분. [[JS 첫걸음 03 - 자료형]] 6.4절과 같은 기준으로 맞춤.
+  - 2.2절 React Native 크래시 서술 → 공식 문서로 확인되는 범위("you must wrap all the text nodes inside of a `<Text>` component", "will raise exception")로 한정함. 정확한 에러 문구는 미확인으로 표시하고 확인 방법을 적음.
+  - 1.4절 표의 `const` "95% 이상 사용" → 출처 없는 수치라서 삭제하고 "(판단)"으로 표시.
+- **양방향 연결 보강**: [[JS 첫걸음 00 - 로드맵]]으로 들어오는 링크를 [[JavaScript Core Syntax and Modern ES6+ Fundamentals]](선행 학습), [[JavaScript (ECMAScript)]](입문 레슨), [[2021-JavaScript from Beginner to Professional]](이 책을 바탕으로 한 레슨 목록과 각 레슨의 관점 비교 요약)에 추가함.
+- **미생성 엔티티 후보 (언급 파일 수)**: Node.js(27), Express(13), Next.js(13), Redux(11), GraphQL(11), Hermes(11), Kubernetes(10), MongoDB(8), OpenTelemetry(8), Zod(7), Prisma(7), Docker(7).
+- **이전 점검에서 넘어온 미해결 항목**: [[React Native Learning Roadmap and Evolution (2019-2022)]] 제목·범위 불일치(이름 변경 제안), 도서 Source 31개의 `source_type` 필드 누락(기본값 `book`이라 규칙 위반은 아님).
+- **다음 Ingest 추천**: JS 첫걸음 레슨 06–11은 이미 투입된 [[2021-JavaScript from Beginner to Professional]]·[[2015-인사이드 자바스크립트]]로 충분함. 위키 확장용 추천은 이전 점검과 같음 (MarginNote4 `Node.js/2025-Node.js Projects`, `API Design/2021-GraphQL in Action`, `Testing/2022-Full Stack Testing`, `PostgreSQL/2026-Just Use Postgres`. 제목 기준이며 목차는 미확인).
