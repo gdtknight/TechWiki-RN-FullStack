@@ -18,7 +18,7 @@ tags:
   - fiber
   - meta
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # React
@@ -26,6 +26,8 @@ updated: 2026-10-19
 ## 개요
 
 **React**는 Meta(구 Facebook)가 개발한 **선언적(Declarative)·컴포넌트 기반 JavaScript UI 라이브러리**로, 애플리케이션의 UI를 상태(State)에 대한 순수 함수(`UI = f(state)`)로 모델링한다 ([[2024-Fluent React]], Ch 1 p.19–54; [[2022-React and React Native, Fourth Edition]], Ch 1 p.27).
+
+2026-02-24부터는 Meta가 아니라 Linux Foundation 산하의 **React Foundation**이 React와 [[React Native]]를 소유한다. 기술 거버넌스는 재단 이사회와 독립적으로 운영된다 ("React's technical governance will always be independent from the React Foundation board.") ([[2026-React Official Documentation]] 4절).
 
 핵심 알고리즘인 [[React Fiber and Reconciliation|가상 DOM 및 Fiber Reconciler]](`react` 패키지)를 실제 화면을 그리는 호스트 렌더러(`react-dom`, `react-native`, `react-three-fiber` 등)와 엄격히 분리한 아키텍처 덕분에, 웹 브라우저뿐만 아니라 [[React Native]]를 통한 iOS/Android 모바일 네이티브 앱 개발의 공통 기반 역할을 수행한다 ([[Web React vs React Native Shared Core and Differences]]).
 
@@ -39,6 +41,11 @@ updated: 2026-10-19
    - 클래스 컴포넌트의 복잡한 생명주기 메서드와 `this` 바인딩 문제를 해결하고, [[React Hooks and Component Design Patterns|Hooks(`useState`, `useEffect`, 커스텀 훅)]]를 통해 상태 로직을 재사용 가능한 함수 단위로 합성한다 ([[2024-React in Depth]], Ch 2–3).
 3. **Concurrent React, React 19 Actions & React Compiler**:
    - React 18부터 도입된 동시성 렌더러(Render Lanes, `useTransition`, `Suspense`)에 이어, **React 19 공식 문서(`react.dev`)** 에서는 비동기 데이터 변이와 폼 처리를 위한 **Actions(`useActionState`, `useFormStatus`, `useOptimistic`)**, 조건부 Promise/Context 읽기 API인 **`use()`**, `forwardRef` 없는 **`ref` 일반 Prop 전달**, **`<Context>` 직접 Provider 렌더링**, 그리고 빌드 타임 자동 메모이제이션을 수행하는 **React Compiler**로 진화했다 ([[2024-Fluent React]], Ch 7 p.203, Ch 10 p.312; [[2026-Full-Stack React TypeScript and Node 2nd Edition]], Ch 5 p.164–191).
+   - **19.x 후속 릴리스** ([[2026-React Official Documentation]] 4절):
+     - React Compiler는 2025-10-07 v1.0 안정판이 되었다 (React 17 이상 호환, Expo SDK 54 이상은 기본 활성화).
+     - 19.2(2025-10-01): `<Activity />`("lets you break your app into "activities" that can be controlled and prioritized")와 `useEffectEvent` 추가. `useEffectEvent`는 외부 시스템의 "이벤트"를 앱 코드에 알리는 Effect 패턴을 위한 API다.
+     - 19.3(2026-09-09): `<ViewTransition>`, Fragment Refs, Trusted Types 지원 추가.
+   - **React Native 반영 시점**: 0.80에 React 19.1.0, 0.83에 19.2, 0.88에 19.3.0이 들어갔다 ([[2026-React Native Official Documentation]] 5절).
 
 ---
 

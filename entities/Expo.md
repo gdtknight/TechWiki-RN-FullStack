@@ -16,7 +16,7 @@ tags:
   - mobile-tooling
   - cng
 created: 2026-10-18
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # Expo
@@ -57,10 +57,20 @@ updated: 2026-10-19
 
 | 항목 | 도서 서술 ([[2021-Do it! 리액트 네이티브 앱 프로그래밍]] Ch 09, [[2022-React and React Native, Fourth Edition]] Ch 16) | 현재 공식 문서 기준 (`reactnative.dev` Get Started, `docs.expo.dev`) |
 |---|---|---|
-| **프로젝트 시작** | `expo init` 또는 `npx react-native init`(CLI)를 동등한 선택지로 제시 | `expo init`은 폐기되고 `npx create-expo-app`으로 대체됨. React Native 공식 문서는 **Expo 같은 프레임워크 사용을 기본 권장**하고, 프레임워크 없는 CLI 방식은 예외적인 경우에만 안내 |
+| **프로젝트 시작** | `expo init` 또는 `npx react-native init`(CLI)를 동등한 선택지로 제시 | `expo init`은 폐기되고 `npx create-expo-app`으로 대체됨. React Native 공식 문서는 신규 앱에 **Expo 같은 프레임워크 사용을 권장**한다. 프레임워크 없는 방식도 허용하지만, 특수한 제약이 있거나 핵심 기능을 직접 해결하려는 경우로 안내한다 |
 | **네이티브 코드 접근** | `expo eject`로 Bare 전환 (일방향, 이후 `ios/`·`android/` 수동 유지보수) | **Continuous Native Generation (CNG)**: `app.json`/`app.config.js` + Config Plugins를 근거로 `npx expo prebuild`가 네이티브 폴더를 **빌드 산출물처럼 언제든 재생성**함. `eject` 개념은 사라짐 |
 | **커스텀 네이티브 모듈** | Expo Go에 포함된 SDK 모듈로 제한됨 | **Development Build**(`expo-dev-client`) + Expo Modules API로 임의의 네이티브 모듈 사용 가능 → 사실상 "Managed라서 생기는 제약"은 사라짐 |
 | **빌드/배포** | 로컬 Xcode/Gradle 빌드 | 로컬 빌드 또는 클라우드 빌드·제출(EAS Build / EAS Submit) 선택 |
+| **런타임 아키텍처** | 구형 Bridge 기반 | SDK 52는 신규 프로젝트만 New Architecture 기본, SDK 53은 전체 기본, SDK 54가 Legacy 지원 마지막, **SDK 55부터 New Architecture 전용** (`newArchEnabled` 옵션 삭제) |
+
+### SDK 버전과 React Native 대응 (2026-10-21 기준, `expo.dev/changelog`)
+| SDK | 52 | 53 | 54 | 55 | 56 | 57 | 58 |
+|---|---|---|---|---|---|---|---|
+| **React Native** | 0.76 | 0.79 | 0.81 | 0.83 | 0.85 | 0.86 | 0.88 |
+
+- 최신 SDK 58 (2026-10-15): Expo Router 데이터 로더·서버 렌더링·미들웨어·네이티브 탭 안정화, Expo Modules 2.0 베타, Android 홈 화면 위젯. 새 Expo Go가 스토어에 올라오기 전까지 `create-expo-app`은 SDK 57 프로젝트를 만든다.
+- React Compiler는 SDK 54부터 기본으로 켜져 있다 (React 블로그 "React Compiler v1.0").
+- 상세 이력: [[2026-Expo Official Documentation]] 3–4절.
 
 > 학습 시에는 도서의 Expo Go·SDK 실습은 그대로 유효하지만, 프로젝트 생성·eject 관련 명령은 위 최신 방식으로 바꿔서 따라 한다. 관련 맥락: [[React Native Learning Roadmap and Evolution (2019-2022)]] §2 (모순 및 Deprecated 항목).
 

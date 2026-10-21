@@ -261,3 +261,13 @@
 - **[[2026-React Official Documentation]]**: 버전을 `React 19` → `19.0–19.3`으로 갱신. React Compiler v1.0 안정판(설치, React 17+ 호환, Expo SDK 54+ 기본 활성화) 반영. 19.2·19.3 신규 API, 19.3 동작 변경 사항, React Foundation 이전, 2025-12 RSC 보안 공지(CVE, 안전 버전 19.0.4, 19.1.5, 19.2.4) 추가. publisher를 React Foundation으로 변경.
 - **도서 인용 교정**: [[JavaScript (ECMAScript)]] 엔진 비교표에서 `2022-RN 4e` p.314 인용을 원문(PDF p.314, 인쇄 p.291)과 대조함. 원문에 없는 "0.69 이전까지 기본"과 "Immer"를 삭제하고, 원문이 실제로 다루는 범위(초기 JSCore만 지원, 0.60 Hermes, 0.64 iOS, `react-native-firebase`·`mobx`)로 수정함.
 - **연쇄 갱신**: [[React Native Architecture (Bridge to New Architecture)]] 4절 제목, `index.md`(원천 소스 라이브러리 목록 및 공식 문서 Source 3개 요약), `CLAUDE.md`(RN 웹사이트 GitHub 경로).
+
+## [2026-10-21] lint | 공식 문서 갱신의 후속 반영 (Flexbox 개념, React·Expo 엔티티)
+- **[[Mobile Layout and Styling with Flexbox]]** 4절을 다시 작성함. 근거: `reactnative.dev/docs/view-style-props`, `layout-props`, 0.71·0.76·0.77 릴리스 글, `react/react-native` CHANGELOG.
+  - 교정: `filter` 예시(`blur`·`saturate`)가 iOS에서 동작하지 않음 → iOS는 `brightness`·`opacity`만, `blur`·`dropShadow`는 Android 12 이상으로 명시.
+  - 교정: `mixBlendMode` 도입 버전 0.76 → 0.77, Android 10 이상 조건 추가.
+  - 교정: `boxShadow`에 Android 9+(outset)·10+(inset) 조건 추가.
+  - 교정: 근거를 확인하지 못한 "Yoga 3.0" 언급 삭제.
+  - 추가: 0.77의 `isolation`·`outlineSpread`, `backgroundImage` 그라디언트(0.87에서 `experimental_` 접두사 제거, 최초 도입 버전은 미확인), 0.88 `fontVariationSettings`, 0.81 `<SafeAreaView>` 사용 중단.
+- **[[React]]**: React Foundation 소유권 이전(2026-02-24), React Compiler v1.0, 19.2·19.3 신규 API, RN별 React 반영 버전(0.80→19.1.0, 0.83→19.2, 0.88→19.3.0) 추가.
+- **[[Expo]]**: 런타임 아키텍처 비교 행, SDK 52–58과 RN 버전 대응표, SDK 58 요점 추가. "프레임워크 없는 방식은 예외적인 경우에만" 서술을 공식 문서 문구 기준으로 교정.

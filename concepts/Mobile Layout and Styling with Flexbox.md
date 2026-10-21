@@ -6,6 +6,7 @@ sources:
   - "[[2019-React Native in Action]]"
   - "[[2021-Do it! 리액트 네이티브 앱 프로그래밍]]"
   - "[[2022-React and React Native, Fourth Edition]]"
+  - "[[2026-React Native Official Documentation]]"
 tags:
   - react-native
   - flexbox
@@ -15,7 +16,7 @@ tags:
   - responsive-design
   - theming
 created: 2026-10-18
-updated: 2026-10-18
+updated: 2026-10-21
 ---
 
 # Mobile Layout and Styling with Flexbox
@@ -64,23 +65,37 @@ updated: 2026-10-18
 
 ### 3.2 플랫폼·화면 크기 대응 및 다크모드
 - **`SafeAreaView` & `react-native-safe-area-context`**: 아이폰 노치(Notch)나 홈 인디케이터 영역을 침범하지 않도록 안전 영역 내부에 콘텐츠를 배치한다 ([[2021-Do it! 리액트 네이티브 앱 프로그래밍]], p.114).
+  - **RN 0.81 변경**: 코어 `<SafeAreaView>`는 사용 중단(deprecated)되었다. 이유는 "It is not compatible with edge-to-edge rendering on Android, and does not permit customization beyond padding."이며, 공식 권장은 `react-native-safe-area-context`다. Android 16은 edge-to-edge 표시를 강제한다 ([[2026-React Native Official Documentation]] 5절).
 - **`Dimensions` / `useWindowDimensions` & `Platform.select`**: 기기의 논리적 가로/세로 크기 및 화면 회전(Orientation)을 감지하고, `Platform.OS` 또는 `Platform.select({ ios: ..., android: ... })`로 OS별 미세 스타일 차이를 분기한다 ([[2019-React Native in Action]], p.232, p.247; [[2021-Do it! 리액트 네이티브 앱 프로그래밍]], p.116, p.158).
 - **Context 기반 다크모드 테마**: `react-native-appearance` / `useColorScheme` 훅과 React Context API를 결합해 시스템 다크모드 설정에 따라 앱 전체 색상 팔레트를 동적으로 전환한다 ([[2019-React Native in Action]], Ch 5 p.139; [[2021-Do it! 리액트 네이티브 앱 프로그래밍]], Ch 05-1 p.303).
 
 ---
 
-## 4. 공식 문서(`reactnative.dev`) 기준 최신 보강: 웹 CSS 호환성 대폭 확장 (RN 0.71–0.77+)
+## 4. 공식 문서(`reactnative.dev`) 기준 최신 보강: 웹 CSS 호환성 확장 (RN 0.71–0.88)
 
-2019–2022년 도서 집필 이후 **Yoga 3.0 엔진과 New Architecture(RN 0.76–0.77+)** 가 도입되면서, 과거 도서에서 "React Native에서 불가능하거나 플랫폼별 분기가 필요하다"고 설명했던 핵심 스타일 속성들이 공식 지원으로 전환되었다:
+2019–2022년 도서 집필 이후, 과거 도서에서 "React Native에서 불가능하거나 플랫폼별 분기가 필요하다"고 설명했던 스타일 속성들이 하나씩 공식 지원으로 바뀌었다. 0.76 이후 추가된 속성은 대부분 **New Architecture 전용**이다. 0.82부터는 New Architecture로만 실행되므로 현재는 실질적 제약이 아니다 ([[2026-React Native Official Documentation]] 5절).
 
-1. **통합 그림자 속성 (`boxShadow`, RN 0.76+)**:
+1. **Flexbox `gap` (RN 0.71+)**:
+   - 0.71 릴리스 글: "0.71 adds initial support for gaps defined using pixel values." 현재 문서 기준으로 `gap`, `rowGap`, `columnGap`은 숫자와 퍼센트 문자열을 받으며, "Percentage values are supported on the New Architecture."
+   - 자식 사이 여백을 `marginRight`/`marginBottom`으로 일일이 계산하던 구형 패턴 대신 부모 컨테이너에 `gap: 10`을 지정한다.
+2. **통합 그림자 `boxShadow` (RN 0.76+)**:
    - **기존 도서의 한계**: iOS는 `shadowColor`, `shadowOffset`, `shadowOpacity`, `shadowRadius` 4개 속성을 조합하고, Android는 `elevation`만 작동하여 플랫폼별 그림자 모양이 달랐다 (`2019-RN in Action` p.135; `2021-Do it! RN` p.168).
-   - **공식 문서 최신 표준**: New Architecture 환경에서 웹 CSS와 동일한 단일 **`boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.2)'`**(내부 그림자 `inset` 및 다중 그림자 포함)를 iOS와 Android 양쪽에서 동일하게 사용할 수 있다.
-2. **그래픽 필터 효과 (`filter` & `mixBlendMode`, RN 0.76–0.77+)**:
-   - 별도 네이티브 이미지 처리 라이브러리 없이 뷰 자체에 **`filter: 'blur(4px) brightness(0.9) saturate(1.2)'`** 및 `mixBlendMode`를 선언적으로 적용할 수 있다.
-3. **Flexbox `gap`, `rowGap`, `columnGap` 및 `display: 'contents'` (RN 0.71–0.77+)**:
-   - 자식 요소 사이에 여백을 주기 위해 일일이 `marginRight`/`marginBottom`을 계산하던 구형 패턴 대신, 웹과 동일하게 부모 컨테이너에 **`gap: 12`** 를 지정하는 것이 현대 표준이다.
-   - 또한 RN 0.77부터 `boxSizing`(`border-box` vs `content-box`), `outline`, `display: 'contents'`가 추가되어 웹([[React]])과 [[React Native]] 간 스타일 코드 공유율이 한층 높아졌다.
+   - **공식 문서**: "This is a spec-compliant implementation of the web style prop of the same name." 웹 문법 문자열이나 `BoxShadowValue` 객체 배열을 받고, 여러 그림자를 합성할 수 있다 ("a single `boxShadow` can be comprised of multiple different shadows").
+   - **플랫폼 조건**: "Outset shadows are only supported on **Android 9+**. Inset shadows are only supported on **Android 10+**."
+3. **그래픽 필터 `filter` (RN 0.76+)**: 지원 함수가 플랫폼마다 크게 다르다.
+   - 공통: `brightness`, `opacity`. iOS는 이 둘만 지원한다 ("Due to issues with performance and spec compliance, these are the only two filter functions available on iOS.").
+   - Android 전용: `blur`, `contrast`, `dropShadow`, `grayscale`, `hueRotate`, `invert`, `sepia`, `saturate`. 이 중 `blur`와 `dropShadow`는 Android 12 이상.
+   - "`filter` implies `overflow: hidden`" 때문에 범위 밖으로 나간 자식은 잘린다.
+   - 예: 크로스플랫폼으로 쓰려면 `filter: [{brightness: 0.8}, {opacity: 0.9}]`처럼 공통 함수만 쓴다.
+4. **RN 0.77에 추가된 웹 CSS 속성** ("All these new features are available only for the New Architecture."):
+   - **`display: 'contents'`**: 요소 자신은 레이아웃 박스를 만들지 않고 자식만 부모의 직계 자식처럼 배치한다. 이벤트를 처리해야 하는 래퍼 컴포넌트에 유용하다.
+   - **`boxSizing`**: `border-box`와 `content-box`를 고른다. 기본값은 웹과 달리 `border-box`다 ("this is different from the default value on the web"). 하위 호환을 위해 그렇게 유지한다.
+   - **`mixBlendMode`와 `isolation`**: 쌓임 맥락(stacking context) 안에서 색 혼합을 제어한다. 현재 문서 기준으로 Android 10 이상이 필요하다.
+   - **outline 속성**: `outlineWidth`, `outlineStyle`, `outlineSpread`, `outlineColor`. border와 비슷하지만 border box 바깥에 그려지며 레이아웃에 영향을 주지 않는다.
+5. **그라디언트 `backgroundImage`**:
+   - 공식 문서: "`backgroundImage` provides the ability to draw a `linear-gradient()` and `radial-gradient()` using a web-like syntax." 예: `backgroundImage: 'linear-gradient(45deg, blue, red)'`.
+   - 0.83 CHANGELOG에 네이티브 파서가 추가됐고("Background image native parser"), 0.87 CHANGELOG에서 정식 속성이 됐다("Remove `experimental_` prefix from `backgroundImage`"). `experimental_backgroundPosition`, `experimental_backgroundRepeat`, `experimental_backgroundSize`는 여전히 실험 단계다. 최초 도입 버전은 미확인이다 (확인 방법: `react/react-native` 저장소 `CHANGELOG.md`에서 `experimental_backgroundImage` 검색).
+6. **가변 폰트 `fontVariationSettings` (RN 0.88+)**: "`fontVariationSettings` is now supported on both `<Text>` and `<TextInput>`, on Android and iOS."
 
 ---
 
