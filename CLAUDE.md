@@ -14,7 +14,7 @@ LLM 에이전트(Claude Code, Codex, Antigravity 등)는 이 볼트에서 작업
      - 메타데이터 DB 경로: `/Users/yoshin/Library/Containers/com.apple.iBooksX/Data/Documents/BKLibrary/BKLibrary*.sqlite` (`ZBKLIBRARYASSET` 테이블의 `ZTITLE`, `ZAUTHOR`, `ZPATH`, `ZCONTENTTYPE = 1`)
    - **공식 웹 기술 문서 (Official Web Documentation)**:
      - `https://react.dev` (React 19+ 공식 문서, GitHub: `reactjs/react.dev`)
-     - `https://reactnative.dev` (React Native 0.76+ 공식 문서, GitHub: `facebook/react-native-website`)
+     - `https://reactnative.dev` (React Native 0.76+ 공식 문서, GitHub: `react/react-native-website`)
      - `https://docs.expo.dev` (Expo SDK 52+ 공식 문서, GitHub: `expo/expo`)
      - 도서(출간 시점의 한계)의 구버전 서술을 보정하고 최신 릴리스 및 아키텍처 규격을 반영하는 제3의 공식 원천 소스로 활용한다.
    - 원천 PDF 및 EPUB은 절대 수정하거나 이동하지 않는다 (MarginNote 4 파일 관리와 태그는 `mn4-librarian` 전용).

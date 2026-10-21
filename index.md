@@ -6,7 +6,7 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - **원천 라이브러리 (Raw Sources)**:
   - **MarginNote 4 PDF**: `/Users/yoshin/Documents/MarginNote4` (약 670권 PDF)
   - **Apple Books EPUB**: `/Users/yoshin/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents` (86권 로컬 EPUB 패키지)
-  - **공식 웹 기술 문서**: `react.dev` (React 19), `reactnative.dev` (RN 0.76+ New Architecture / Bridgeless), `docs.expo.dev` (Expo SDK 52+ / CNG)
+  - **공식 웹 기술 문서**: `react.dev` (React 19.0–19.3), `reactnative.dev` (RN 0.76–0.88, 0.82부터 New Architecture 전용), `docs.expo.dev` (Expo SDK 52–58 / CNG)
 - **운영 스키마**: [[CLAUDE|CLAUDE.md]]
 - **작업 이력 로그**: [[log|log.md]]
 
@@ -14,9 +14,9 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 
 ## Sources (원천 도서 요약)
 
-- [[2026-React Official Documentation]] — React Team (Meta Open Source, 2026). React 19 코어 명세, 컴포넌트 순수성과 트리 위치 기반 상태 보존/리셋 규칙, `ref` 일반 Prop 전달, 비동기 Actions(`useActionState`, `useFormStatus`, `useOptimistic`), `use()` API, React Server Components 및 React Compiler 자동 최적화. `[Official Documentation/Frontend]`
-- [[2026-React Native Official Documentation]] — React Native Team (Meta Open Source, 2026). React Native 0.76–0.78+ 코어 명세, 구형 Bridge 폐기 및 Bridgeless Mode 기본화, JSI 직접 메모리 바인딩, Fabric C++ Shadow Tree & Yoga 동기 레이아웃, TurboModules & Codegen, Hermes AOT 바이트코드, "Use a Framework" (Expo & CNG) 표준. `[Official Documentation/Mobile]`
-- [[2026-Expo Official Documentation]] — Expo Team (650 Industries, 2026). Expo SDK 52–53+ 코어 명세, Continuous Native Generation (CNG: `npx expo prebuild`) 및 Config Plugins, Development Builds(`expo-dev-client`), Expo Router 파일 기반 라우팅, EAS(Build, Submit, Update) 엔터프라이즈 인프라 및 Expo Modules API. `[Official Documentation/Mobile]`
+- [[2026-React Official Documentation]] — React Team (React Foundation, 2026). React 19.0–19.3 코어 명세, 19.2(`<Activity>`, `useEffectEvent`)·19.3(`<ViewTransition>`, Fragment Refs) 릴리스 이력, React Compiler v1.0, 2025-12 RSC 보안 공지, 컴포넌트 순수성과 트리 위치 기반 상태 보존/리셋 규칙, `ref` 일반 Prop 전달, 비동기 Actions(`useActionState`, `useFormStatus`, `useOptimistic`), `use()` API, React Server Components 및 React Compiler 자동 최적화. `[Official Documentation/Frontend]`
+- [[2026-React Native Official Documentation]] — React Native Team (React Foundation, 2026). React Native 0.76–0.88 코어 명세, New Architecture 기본화(0.76) → 전용화(0.82) → 레거시 코드 제거(0.84+), JSI 직접 메모리 바인딩, Fabric C++ Shadow Tree & Yoga 동기 레이아웃, TurboModules & Codegen, Hermes V1 기본(0.84), 0.79–0.88 릴리스 이력, "Use a Framework" (Expo & CNG) 권장. `[Official Documentation/Mobile]`
+- [[2026-Expo Official Documentation]] — Expo Team (650 Industries, 2026). Expo SDK 52–58 코어 명세, SDK 55부터 New Architecture 전용, SDK 53–58 릴리스 이력(SDK 58 = RN 0.88), Continuous Native Generation (CNG: `npx expo prebuild`) 및 Config Plugins, Development Builds(`expo-dev-client`), Expo Router 파일 기반 라우팅, EAS(Build, Submit, Update) 엔터프라이즈 인프라 및 Expo Modules API. `[Official Documentation/Mobile]`
 - [[2026-AI 에이전트를 깊이 이해하기]] — Bojie Li, 역: JeongJaeSoon (2026). `현대 에이전트 = LLM + 컨텍스트 + 도구` 공식, 하네스 엔지니어링 5요소, KV Cache 친화적 접두사 불변 설계, [[Model Context Protocol (MCP)]] 계층형 도구 발견, 코딩 에이전트, 통계적 평가 및 사후 학습(SFT/RL)/지속적 진화 폐루프 총론. `[Apple Books/AI & Software Engineering]`
 - [[2026-Build AI-Enhanced Web Apps]] — Theo Despoudis (Manning, 2026). Vercel AI SDK(`useChat`, `streamText`, Generative UI), 대화 상태/슬라이딩 윈도우 메모리, LangChain.js 멀티스텝 워크플로우 및 웹 RAG 파이프라인, 프롬프트 인젝션 방어, [[Model Context Protocol (MCP)]] 웹 통합 실전서. `[H. Information Systems/Web Infrastructure]`
 - [[2026-Clean Code with TypeScript]] — Rukevwe Ojigbo, Dr. Sanjay Krishna Anbalagan (Packt, 2026). 클린 함수와 합성 원칙, TDD/비동기 에러/성능 프로파일링, Nx 모노레포, OpenAPI + Orval + React Query 계약 우선 개발 및 JSON 런타임 검증 게이트(Runtime Gate). `[E. Programming Languages/JavaScript-TypeScript]`

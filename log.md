@@ -253,3 +253,11 @@
 - **미생성 엔티티 후보 (언급 파일 수)**: Node.js(22), Express(13), Next.js(13), Redux(11), GraphQL(11), Kubernetes(10), Hermes(9), MongoDB(8), OpenTelemetry(8), Zod(7), Prisma(7), Docker(7).
 - **로드맵 범위**: [[React Native Learning Roadmap and Evolution (2019-2022)]]에 공식 문서 Source 3개와 [[2025-Building Applications with AI Agents]]가 포함되지 않음. 제목과 범위 불일치(이름 변경 제안)도 여전히 미반영.
 - **다음 Ingest 추천 (MarginNote4, 제목 기준 선별 · 목차 미확인)**: `H. Information Systems/Node.js/2025-Node.js Projects`, `H. Information Systems/API Design/2021-GraphQL in Action`, `D. Software Engineering/Testing/2022-Full Stack Testing`, `F. Data Management/PostgreSQL/2026-Just Use Postgres`.
+
+## [2026-10-21] ingest | 공식 문서 Source 3개 최신 릴리스 반영 (RN 0.88 · Expo SDK 58 · React 19.3)
+- **근거**: `reactnative.dev/blog` 릴리스 글(0.76, 0.79–0.88, "The New Architecture is Here"), `reactnative.dev/docs/environment-setup`, `expo.dev/changelog` SDK 52–58 글, `react.dev/blog` 글(19.2, Compiler v1.0, React Foundation, 19.3, RSC 보안 공지 2건). 인용문은 모두 원문 문구 그대로 옮김.
+- **[[2026-React Native Official Documentation]]**: 버전을 `0.76–0.78+` → `0.76–0.88`로 갱신. 0.79–0.88 릴리스 이력 표 추가. Hermes V1 기본화(0.84)와 JSC 커뮤니티 이관 반영. Bridgeless 절을 공식 원문 기준으로 다시 작성("The bridge remains for backward compatibility", interop layer 유지). "프레임워크 없이는 Brownfield에서만"이라는 과장 서술을 원문 기준으로 교정. GitHub 경로를 `react/react-native-website`로 변경. publisher를 React Foundation으로 변경.
+- **[[2026-Expo Official Documentation]]**: 버전을 `SDK 52–53+` → `SDK 52–58`로 갱신. New Architecture 전환 단계 표(SDK 52 신규 프로젝트 기본 → 53 전체 기본 → 54 레거시 지원 마지막 → 55 전용) 추가. SDK 53–58 릴리스 이력 추가. 근거가 확인되지 않은 "모든 코어 모듈을 JSI·TurboModules로 전면 재작성" 서술은 삭제.
+- **[[2026-React Official Documentation]]**: 버전을 `React 19` → `19.0–19.3`으로 갱신. React Compiler v1.0 안정판(설치, React 17+ 호환, Expo SDK 54+ 기본 활성화) 반영. 19.2·19.3 신규 API, 19.3 동작 변경 사항, React Foundation 이전, 2025-12 RSC 보안 공지(CVE, 안전 버전 19.0.4, 19.1.5, 19.2.4) 추가. publisher를 React Foundation으로 변경.
+- **도서 인용 교정**: [[JavaScript (ECMAScript)]] 엔진 비교표에서 `2022-RN 4e` p.314 인용을 원문(PDF p.314, 인쇄 p.291)과 대조함. 원문에 없는 "0.69 이전까지 기본"과 "Immer"를 삭제하고, 원문이 실제로 다루는 범위(초기 JSCore만 지원, 0.60 Hermes, 0.64 iOS, `react-native-firebase`·`mobx`)로 수정함.
+- **연쇄 갱신**: [[React Native Architecture (Bridge to New Architecture)]] 4절 제목, `index.md`(원천 소스 라이브러리 목록 및 공식 문서 Source 3개 요약), `CLAUDE.md`(RN 웹사이트 GitHub 경로).

@@ -16,7 +16,7 @@ tags:
   - hermes
   - javascriptcore
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # JavaScript (ECMAScript)
@@ -36,8 +36,8 @@ JavaScript 코드는 실행되는 플랫폼에 따라 서로 다른 가상 머�
 | JS 엔진 | 개발사 및 주요 채택 환경 | 컴파일/실행 방식 | 핵심 특징 및 모바일 영향 |
 |---|---|---|---|
 | **V8** | Google (Chrome, Node.js, Deno, Android 구형 옵션) | JIT (Just-In-Time) 컴파일러 중심 | 장기 실행 서버 및 데스크톱 웹에서 최고 수준의 처리량 발휘. 단, JIT 워밍업 시간과 메모리 사용량이 커서 모바일 앱 초기 구동에는 부담이 될 수 있음. |
-| **JavaScriptCore (JSC)** | Apple (Safari, iOS 기본 WebKit, 구형 React Native 기본 엔진) | 인터프리터 + 다단계 JIT (iOS 서드파티 앱에서는 보안 정책상 JIT 비활성화 가능) | [[React Native]] 초기부터 0.69 이전까지 기본 엔진으로 사용됨 (`2022-RN 4e` p.314). 런타임에 JS 소스를 파싱하므로 번들이 클수록 앱 시작(TTI)이 지연됨. |
-| **Hermes** | Meta (**모던 [[React Native]] Android/iOS 표준 엔진**) | **빌드 타임 AOT(Ahead-Of-Time) 바이트코드 프리컴파일** | Metro 번들러가 빌드 시점에 JS를 바이트코드로 미리 컴파일하여, **앱 시작 시간(Startup time) 단축, 앱 용량 축소, 메모리 점유율 대폭 절감** 달성 (`2022-RN 4e` p.314). ES6 `Proxy`를 기본 지원하여 MobX/Immer 등 호환. |
+| **JavaScriptCore (JSC)** | Apple (Safari, iOS 기본 WebKit, 구형 React Native 기본 엔진) | 인터프리터 + 다단계 JIT (iOS 서드파티 앱에서는 보안 정책상 JIT 비활성화 가능) | [[React Native]]는 초기에 JSCore만 지원했음 (`2022-RN 4e` PDF p.314). 0.70부터 Hermes가 기본 엔진이 되었고 (RN 0.84 릴리스 글: "Hermes (the default since 0.70)"), 0.79부터 JSC는 커뮤니티 패키지 `@react-native-community/javascriptcore`로 이관됨. 런타임에 JS 소스를 파싱하므로 번들이 클수록 앱 시작(TTI)이 지연됨. |
+| **Hermes** | Meta (**모던 [[React Native]] Android/iOS 표준 엔진**) | **빌드 타임 AOT(Ahead-Of-Time) 바이트코드 프리컴파일** | 빌드 시점에 JS를 바이트코드로 미리 컴파일한다. 도서가 꼽는 개선점은 **앱 시작 시간 단축, 다운로드 용량 축소, 메모리 사용 감소**, 그리고 `react-native-firebase`·`mobx`를 쓸 수 있게 하는 내장 `Proxy` 지원이다 (`2022-RN 4e` PDF p.314). 0.84부터 **Hermes V1**이 iOS·Android 기본 엔진이다 ([[2026-React Native Official Documentation]]). |
 
 ---
 

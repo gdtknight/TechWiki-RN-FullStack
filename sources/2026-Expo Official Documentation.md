@@ -5,7 +5,7 @@ title: "Expo Official Documentation"
 authors: ["Expo Team"]
 publisher: "650 Industries (Expo)"
 year: 2026
-version: "Expo SDK 52–53+"
+version: "Expo SDK 52–58"
 category: "Official Documentation/Mobile"
 url: "https://docs.expo.dev"
 status: ingested
@@ -27,7 +27,7 @@ updated: 2026-10-21
 
 > **출처**: [docs.expo.dev](https://docs.expo.dev) (GitHub: [`expo/expo`](https://github.com/expo/expo))
 > **주관/게시**: Expo Team (650 Industries, 2026)
-> **대상 버전**: `Expo SDK 52–53+` (React Native New Architecture & React 19 지원)
+> **대상 버전**: `Expo SDK 52–58` (SDK 58 = React Native 0.88, 2026-10-15 기준. 릴리스 이력은 4절)
 > **분류**: `Official Documentation / Mobile`
 
 ---
@@ -70,14 +70,35 @@ React Native 공식 문서(`reactnative.dev`)가 신규 앱 개발의 기본 표
 
 ---
 
-## 3. React Native New Architecture와의 완벽한 통합
+## 3. React Native New Architecture 전환 단계 (Expo changelog 기준)
 
-- Expo SDK 52+부터 **React Native New Architecture(Fabric, TurboModules, JSI, Bridgeless Mode)가 기본(Default)** 으로 지원된다.
-- Expo SDK의 모든 코어 모듈(카메라, 파일시스템, 미디어 등)이 C++ JSI 및 TurboModules 사양으로 전면 재작성되어, 구형 Bridge 없이 네이티브 UI 스레드와 동기적으로 통신한다.
+| SDK | New Architecture 상태 | 원문 근거 |
+|---|---|---|
+| **52** (2024-11-12, RN 0.76) | 신규 프로젝트만 기본값. 기존 프로젝트는 옵트인 | "The New Architecture is now enabled by default for all new projects." |
+| **53** (2025-04-30, RN 0.79) | 모든 프로젝트에서 기본값. 끌 수 있음 | "New Architecture is enabled by default in all projects." |
+| **54** (2025-09-10, RN 0.81) | Legacy Architecture를 지원하는 마지막 SDK | "SDK 54 is the final release to include Legacy Architecture support." |
+| **55** (2026-02-25, RN 0.83) | **New Architecture 전용**. `app.json`의 `newArchEnabled` 옵션 삭제 | "you will not be able to use the Legacy Architecture in SDK 55 projects and later." |
 
 ---
 
-## 4. 기존 도서 서술과의 차이 및 주의점 (Version Drift)
+## 4. SDK 릴리스 이력: 53–58 (`expo.dev/changelog` 기준)
+
+| SDK (발표일) | React Native / React | 주요 변경 |
+|---|---|---|
+| **53** (2025-04-30) | RN 0.79 / React 19 | New Architecture 전면 기본, Android 신규 프로젝트 edge-to-edge 기본 적용 시작, Metro `package.json` `exports` 기본 활성화 |
+| **54** (2025-09-10) | RN 0.81 / React 19.1 | iOS용 React Native를 사전 컴파일 XCFramework로 배포, iOS 26 Liquid Glass, Android 16(API 36) 타깃, 새 `expo-file-system` API 기본화 |
+| **55** (2026-02-25) | RN 0.83 / React 19.2 | Legacy Architecture 지원 종료, Hermes v1 옵트인, EAS Update용 Hermes 바이트코드 diffing, Brownfield(기존 네이티브 앱에 Expo 추가), `expo-widgets`(iOS) 알파 |
+| **56** (2026-05-21) | RN 0.85 / React 19.2 | Expo UI(Jetpack Compose·SwiftUI) 안정화, 인라인 Expo Modules, Hermes 바이트코드 diffing 기본, iOS 위젯 안정화, 신규 프로젝트에 AI 에이전트 지침 파일 포함, Expo Router가 React Navigation의 일부를 포크 |
+| **57** (2026-06-30) | RN 0.86 / React 19.2 | RN 0.86 업그레이드 중심, Xcode 27·iOS 27 SDK 대응(UIKit scene 생명주기 필수) |
+| **58** (2026-10-15) | RN 0.88 / React 미기재 | iOS 27 대응, Expo Router 데이터 로더·서버 렌더링·미들웨어·네이티브 탭 안정화, Expo Modules 2.0 베타(클래스 기반 API), Android 홈 화면 위젯, Expo Observe(프로덕션 모니터링), 에이전트용 CLI(`@expo/agent-cli`, 실험), SwiftPM 기반 작업(CocoaPods가 기본 유지) |
+
+- **SDK 58 출시 직후 주의점**: 새 Expo Go가 스토어에 올라오기 전까지 `create-expo-app`은 SDK 57 프로젝트를 만든다. 새 Expo Go는 SDK 58만 지원한다.
+- **SDK 58 Node.js 요구 버전**: 22 계열은 22.13 이상, 24 계열은 24.3 이상, 또는 26 이상. 23·25 같은 홀수 버전은 지원하지 않는다.
+- SDK 57 릴리스 글은 연 3회였던 SDK 메이저 릴리스 주기를 재검토 중이라고 밝힌다 ("Exploring a new Expo SDK release cadence").
+
+---
+
+## 5. 기존 도서 서술과의 차이 및 주의점 (Version Drift)
 
 | 항목 | 기존 도서 서술 (2021–2022년 출간 도서들) | Expo 공식 문서 기준 (`docs.expo.dev`) |
 |---|---|---|
@@ -86,11 +107,11 @@ React Native 공식 문서(`reactnative.dev`)가 신규 앱 개발의 기본 표
 | **커스텀 네이티브 모듈** | 사용 불가 (Bare 전환 필수) | **Development Builds (`expo-dev-client`)** 로 제한 없이 사용 가능 |
 | **라우팅 모델** | `react-navigation` 명령형 컴포넌트 수동 조립 | **Expo Router** 파일 기반 선언적 라우팅 권장 |
 | **클라우드 파이프라인** | 레거시 Expo Build (`expo build:ios/android`) | **EAS (Expo Application Services: Build, Submit, Update)** |
-| **런타임 아키텍처** | 구형 비동기 JSON Bridge 기반 | **RN New Architecture & Bridgeless Mode 완벽 통합 지원** |
+| **런타임 아키텍처** | 구형 비동기 JSON Bridge 기반 | **SDK 55부터 RN New Architecture 전용** (3절) |
 
 ---
 
-## 5. 파생 및 연관 위키 페이지
+## 6. 파생 및 연관 위키 페이지
 
 - **엔티티**: [[Expo]], [[React Native]], [[React Navigation]]
 - **코어 개념**: [[React Native Architecture (Bridge to New Architecture)]], [[Mobile Layout and Styling with Flexbox]]

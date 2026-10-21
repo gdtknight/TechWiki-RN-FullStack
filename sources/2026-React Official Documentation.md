@@ -3,9 +3,9 @@ type: source
 source_type: official-docs
 title: "React Official Documentation"
 authors: ["React Team"]
-publisher: "Meta Open Source"
+publisher: "React Foundation (Linux Foundation)"
 year: 2026
-version: "React 19"
+version: "React 19 (19.0–19.3)"
 category: "Official Documentation/Frontend"
 url: "https://react.dev"
 status: ingested
@@ -25,8 +25,8 @@ updated: 2026-10-21
 # React Official Documentation
 
 > **출처**: [react.dev](https://react.dev) (GitHub: [`reactjs/react.dev`](https://github.com/reactjs/react.dev))
-> **주관/게시**: React Team (Meta Open Source, 2026)
-> **대상 버전**: `React 19`
+> **주관/게시**: React Team. 2026-02-24부터 React Foundation(Linux Foundation 산하)이 소유하며, 그 전에는 Meta가 소유했다. 근거: "React, React Native, and supporting projects like JSX are no longer owned by Meta — they are now owned by the React Foundation, an independent foundation hosted by the Linux Foundation."
+> **대상 버전**: `React 19` (19.0 → 19.3, 2026-09-09 기준. 릴리스 이력은 4절)
 > **분류**: `Official Documentation / Frontend`
 
 ---
@@ -75,10 +75,39 @@ React 19는 비동기 요청과 폼 처리를 네이티브 레벨에서 다루�
 ### 3.6 React Compiler (자동 메모이제이션)
 - 과거 성능 최적화를 위해 개발자가 수동으로 작성하던 `useMemo`, `useCallback`, `React.memo`는 코드 가독성을 해치고 의존성 배열 누락 버그를 유발했다.
 - Meta 팀이 도입한 **React Compiler**는 빌드 타임에 AST(추상 구문 트리)를 분석하여 값이 변경되었을 때만 필요한 부분만 선택적으로 리렌더링하도록 컴포넌트 코드를 자동으로 최적화한다.
+- **v1.0 안정판 (2025-10-07)**: "React Compiler is a build-time tool that optimizes your React app through automatic memoization."
+  - 설치: `npm install --save-dev --save-exact babel-plugin-react-compiler@latest`. 버전을 고정하라고 권장하는 이유는 "changing memoization may under rare circumstances cause unexpected behavior."이기 때문이다.
+  - 호환: "React Compiler is compatible with React 17 and up." React 19 미만이면 `react-compiler-runtime` 의존성과 target 설정이 필요하다.
+  - 기본 활성화 현황: Expo SDK 54 이상은 기본으로 켜져 있고, Vite(`create-vite`)와 Next.js(`create-next-app`)는 컴파일러가 켜진 템플릿을 고르는 옵트인 방식이다.
 
 ---
 
-## 4. 기존 도서 서술과의 차이 및 주의점 (Version Drift)
+## 4. React 19.x 릴리스 이력과 보안 공지 (`react.dev/blog` 기준)
+
+| 버전·글 (발표일) | 핵심 변경 | 원문 근거 |
+|---|---|---|
+| **19.0** (2024-12-05) | Actions, `use`, `ref` Prop화, `<Context>` 직접 렌더링 등 (3절) | "React v19" 글 |
+| **19.1** | 별도 블로그 글 없음. GitHub `CHANGELOG.md` 참고 | "not every React release deserves its own blog post" |
+| **19.2** (2025-10-01) | `<Activity />`, `useEffectEvent`, `cacheSignal`, Chrome DevTools Performance Tracks, React DOM Partial Pre-rendering, `eslint-plugin-react-hooks` v6(flat config 기본) | "`<Activity>` lets you break your app into "activities" that can be controlled and prioritized." |
+| **React Compiler v1.0** (2025-10-07) | 컴파일러 첫 안정판 (3.6절) | "We are releasing the compiler's first stable release today." |
+| **React Foundation** (2026-02-24) | React·React Native·JSX 소유권이 Linux Foundation 산하 React Foundation으로 이전. 창립 플래티넘 멤버는 Amazon, Callstack, Expo, Huawei, Meta, Microsoft, Software Mansion, Vercel | "React's technical governance will always be independent from the React Foundation board." |
+| **19.3** (2026-09-09) | `<ViewTransition>`와 `addTransitionType`, Suspense 연계 애니메이션, Fragment Refs, `use(browser())`로 서버 렌더링 제외, Trusted Types 지원, Server Components에서 `<Context>` 렌더링 | "The new `<ViewTransition>` component lets you animate elements as they enter, exit, move, or resize using the browser's View Transition API." |
+
+### 4.1 19.3 동작 변경 주의점 (Changelog 항목)
+- Strict Mode가 hydration 중에도 Effect를 두 번 호출한다. 클라이언트 렌더링 루트와 동작이 같아졌다.
+- `resize` 이벤트로 인한 업데이트는 다음 프레임까지 배치된다.
+- Transition끼리 독립적으로 렌더링되어, 느린 Transition이 관계없는 Transition을 붙잡지 않는다.
+
+### 4.2 React Server Components 보안 공지 (2025-12)
+RSC를 쓰는 앱(Next.js, React Router, Waku, `@parcel/rsc`, `@vitejs/plugin-rsc`, rwsdk 등)은 아래 버전 이상으로 올려야 한다. 대상 패키지는 `react-server-dom-webpack`, `react-server-dom-parcel`, `react-server-dom-turbopack`이다.
+- **2025-12-03 원격 코드 실행**: "There is an unauthenticated remote code execution vulnerability in React Server Components." CVE-2025-55182, CVSS 10.0.
+- **2025-12-11 후속 취약점**: 서비스 거부(CVE-2025-55184, CVE-2025-67779, CVE-2026-23864, CVSS 7.5)와 소스 코드 노출(CVE-2025-55183, CVSS 5.3).
+- **안전한 버전**: "Versions 19.0.4, 19.1.5, 19.2.4 are safe." 앞선 공지의 19.0.3, 19.1.4, 19.2.3은 불완전한 수정이다.
+- 영향 범위: "If your app's React code does not use a server, your app is not affected by this vulnerability." 순수 클라이언트 앱과 React Native 앱 코드는 이 공지의 대상 패키지를 쓰지 않는다 (판단: 공지가 나열한 영향 패키지·프레임워크 목록에 근거).
+
+---
+
+## 5. 기존 도서 서술과의 차이 및 주의점 (Version Drift)
 
 | 항목 | 기존 도서 서술 (2021–2024년 출간 도서들) | React 19 공식 문서 기준 (`react.dev`) |
 |---|---|---|
@@ -91,7 +120,7 @@ React 19는 비동기 요청과 폼 처리를 네이티브 레벨에서 다루�
 
 ---
 
-## 5. 파생 및 연관 위키 페이지
+## 6. 파생 및 연관 위키 페이지
 
 - **코어 개념**: [[React Fiber and Reconciliation]], [[React Hooks and Component Design Patterns]], [[Virtual DOM and Reconciliation from Scratch]], [[Next.js Rendering Strategies (SSR, SSG, ISR, and RSC)]]
 - **엔티티**: [[React]], [[Model Context Protocol (MCP)]]
