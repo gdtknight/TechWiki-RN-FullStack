@@ -237,3 +237,19 @@
   - 실제 iCloud 볼트 디렉터리: `/Users/yoshin/Library/Mobile Documents/iCloud~md~obsidian/Documents/TechWiki-RN-FullStack`
   - 로컬 심볼릭 링크: `/Users/yoshin/Documents/TechWiki-RN-FullStack` (기존 `/Users/yoshin/Documents/TechWiki`는 하위 호환성을 위해 새 경로 심볼릭 링크 유지)
 - **문서 갱신**: `CLAUDE.md`, `index.md`, `log.md` 내부 경로 및 타이틀 정규화 완료.
+
+## [2026-10-21] lint | 전체 70개 페이지 링크·인덱스·프론트매터 점검 및 RN 레거시 아키텍처 서술 교정
+- **링크 무결성**: 실제로 깨진 위키링크 0건, 고아 페이지 0건, 아웃바운드 링크 없는 페이지 0건. 검출된 후보 8건(`[[Prototype]]`, `[[Scope]]`, `[[위키링크]]`)은 모두 인라인 코드나 mermaid 코드 블록 안의 JS 내부 슬롯·예시 표기라서 링크가 아님.
+- **Index 동기화**: 실제 파일 70개와 `index.md` 항목이 100% 일치하고, 섹션 배치 오류도 없음.
+- **프론트매터**: 공통 필수 필드 누락 0건, `pdf_path`·`epub_path` 경로 모두 실존. 도서 Source 31개에 `source_type` 필드가 없음. 스키마상 기본값이 `book`이라 위반은 아니지만, `templates/source.md`에도 이 필드가 없음 → 일괄 추가할지 보류.
+- **물결표(`~`) 규칙**: 본문 위반 0건. 검출 9건은 프론트매터 `epub_path`의 `iCloud~com~apple~iBooks` 경로 문자열.
+- **오래된 서술 교정 (2개 문서)**: "RN 0.76에서 구형 Bridge가 완전히 제거되었다"는 과장 서술을 공식 블로그 원문 기준으로 교정함 (0.76은 기본값만 전환, 0.82부터 Legacy Architecture를 켤 수 없음, interop layer는 유지, 0.84부터 레거시 코드 제거 진행).
+  - [[React Native Architecture (Bridge to New Architecture)]] (4절에 레거시 제거 타임라인 추가)
+  - [[React and React Native Internal Implementation Deep Dive]] (5.2절)
+- **버전 노후화 (미교정, 후속 작업 필요)**: 공식 문서 Source 3개의 기준 버전이 현재 릴리스보다 낮음.
+  - [[2026-React Native Official Documentation]]: `0.76–0.78+` → 현재 0.88 (2026-10-19)
+  - [[2026-Expo Official Documentation]]: SDK `52–53+` → 현재 SDK 58 (2026-10-15, RN 0.88 포함)
+  - [[2026-React Official Documentation]]: React 19 → 현재 19.3 (2026-09-09). 이 밖에 React Compiler v1.0 (2025-10-07), React Foundation 출범 공지 (2025-10-07) 등.
+- **미생성 엔티티 후보 (언급 파일 수)**: Node.js(22), Express(13), Next.js(13), Redux(11), GraphQL(11), Kubernetes(10), Hermes(9), MongoDB(8), OpenTelemetry(8), Zod(7), Prisma(7), Docker(7).
+- **로드맵 범위**: [[React Native Learning Roadmap and Evolution (2019-2022)]]에 공식 문서 Source 3개와 [[2025-Building Applications with AI Agents]]가 포함되지 않음. 제목과 범위 불일치(이름 변경 제안)도 여전히 미반영.
+- **다음 Ingest 추천 (MarginNote4, 제목 기준 선별 · 목차 미확인)**: `H. Information Systems/Node.js/2025-Node.js Projects`, `H. Information Systems/API Design/2021-GraphQL in Action`, `D. Software Engineering/Testing/2022-Full Stack Testing`, `F. Data Management/PostgreSQL/2026-Just Use Postgres`.

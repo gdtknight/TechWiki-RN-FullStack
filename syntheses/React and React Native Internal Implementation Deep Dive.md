@@ -241,7 +241,7 @@ sequenceDiagram
 
 ### 5.2 모던 New Architecture (RN 0.76+ Default & Bridgeless Mode)
 
-Meta는 React Native 0.76+부터 구형 Bridge를 완전히 걷어내고, **JSI, Fabric, TurboModules, Hermes, Codegen**을 기반으로 하는 **Bridgeless Architecture**를 기본(Default)으로 채택했다 ([[React Native Architecture (Bridge to New Architecture)]]).
+Meta는 React Native 0.76부터 **JSI, Fabric, TurboModules, Hermes, Codegen**을 기반으로 하는 **Bridgeless Architecture**를 기본(Default)으로 채택했다. 0.76–0.81에서는 Legacy Architecture로 되돌릴 수 있었고, Legacy Architecture를 켤 수 없게 된 것은 0.82부터이며, 레거시 코드 제거는 0.84부터 진행 중이다 ([[React Native Architecture (Bridge to New Architecture)]] 4절의 레거시 제거 타임라인).
 
 ```mermaid
 flowchart TD

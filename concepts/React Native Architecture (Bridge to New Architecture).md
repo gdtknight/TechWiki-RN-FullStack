@@ -18,7 +18,7 @@ tags:
   - yoga
   - metro
 created: 2026-10-18
-updated: 2026-10-18
+updated: 2026-10-21
 ---
 
 # React Native Architecture (Bridge to New Architecture)
@@ -96,13 +96,16 @@ flowchart LR
 
 ---
 
-## 4. 공식 문서(`reactnative.dev`) 기준 최신 보강: RN 0.76–0.77+ Bridgeless 기본화
+## 4. 공식 문서(`reactnative.dev`) 기준 최신 보강: RN 0.76 기본화부터 0.84 레거시 제거까지
 
 [[2022-React and React Native, Fourth Edition]] 집필 당시(RN 0.68–0.70)에는 New Architecture가 실험적 옵트인(`newArchEnabled=true`) 기능이었으나, **React Native 0.76 및 0.77 공식 문서(`reactnative.dev/blog`)** 기준으로 다음과 같이 완전히 세대교체되었다:
 
 1. **New Architecture & Bridgeless Mode 기본 활성화 (RN 0.76+ Default)**:
    - React Native 0.76부터 모든 신규 프로젝트에서 별도 설정 없이 **New Architecture(Fabric + TurboModules + JSI)가 기본값(Default)으로 활성화**된다.
-   - 나아가 초기화 과정이나 에러 처리 등에 남아 있던 레거시 브릿지 의존성까지 완전히 제거한 **Bridgeless Mode(무브릿지 모드)** 가 기본 적용되어, JS 런타임(Hermes)과 C++ 네이티브 계층이 100% JSI를 통해서만 통신한다.
+   - 나아가 초기화 과정이나 에러 처리 등에 남아 있던 레거시 브릿지 의존성을 걷어낸 **Bridgeless Mode(무브릿지 모드)** 가 기본 적용된다. 단, 0.76에서는 "기본값"일 뿐 Legacy Architecture가 코드베이스에서 제거된 것은 아니다 (아래 레거시 제거 타임라인 참고).
+   - **레거시 제거 타임라인 (공식 블로그 기준)**:
+     - **0.82 (2025-10-08)**: "the first React Native that runs entirely on the New Architecture" — Android의 `newArchEnabled=false`, iOS의 `RCT_NEW_ARCH_ENABLED=0`을 설정해도 무시된다. 다만 "We will keep the interop layers in the codebase for the foreseeable future"라고 밝혀 레거시 모듈용 interop layer는 유지된다 (`reactnative.dev/blog/2025/10/08/react-native-0.82`).
+     - **0.84 (2026-02-11)**: "We've also continued removing the Legacy Architecture on both iOS and Android" — 레거시 코드 제거가 진행 중이며, 같은 릴리스에서 Hermes V1이 기본 엔진이 되었다 (`reactnative.dev/blog`, "React Native 0.84 - Hermes V1 by Default").
 2. **웹 표준 정렬 Event Loop & 동기식 레이아웃(`useLayoutEffect`)**:
    - 구형 브릿지에서는 레이아웃 측정(`onLayout`)이 비동기로만 가능해 툴팁 위치 계산 시 화면 깜빡임이 발생했으나, Fabric 렌더러에서는 `useLayoutEffect` 내부에서 네이티브 뷰의 위치·크기(`getBoundingClientRect` / `measure`)를 **동기적으로 읽고 화면이 그려지기 전에 레이아웃을 즉시 보정**할 수 있다.
    - 또한 JS Event Loop가 웹 표준 Microtask 처리 규격과 일치하도록 개편되어 React 18/19의 **Concurrent Rendering(`Suspense`, `useTransition`, Automatic Batching)** 이 모바일 네이티브 뷰에서도 완벽히 동작한다.
