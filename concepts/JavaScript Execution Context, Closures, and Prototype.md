@@ -18,7 +18,7 @@ tags:
   - this-binding
   - immutability
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # JavaScript Execution Context, Closures, and Prototype
@@ -96,6 +96,7 @@ flowchart LR
 
 ## 관련 개념 및 엔티티
 
+- **선행 학습 (입문자용)**: [[JS 첫걸음 10 - 스코프와 클로저]] — 스코프·스코프 체인·클로저를 비유와 실행 예제로 먼저 익히는 레슨 ([[JS 첫걸음 00 - 로드맵|시리즈 로드맵]])
 - **선행/연관 개념**: [[JavaScript Core Syntax and Modern ES6+ Fundamentals]], [[JavaScript Event Loop and Asynchronous Patterns]], [[React Hooks and Component Design Patterns]], [[Virtual DOM and Reconciliation from Scratch]], [[TypeScript Type System and Advanced Generics]]
 - **구현 기술/엔티티**: [[JavaScript (ECMAScript)]], [[TypeScript]], [[React]], [[React Native]]
 - **출처 문헌**: [[2015-인사이드 자바스크립트]] (Ch 3–7), [[2022-자바스크립트로 배우는 SICP]] (Ch 2–3), [[2021-JavaScript Cookbook 3e]] (Ch 5–7), [[2021-JavaScript from Beginner to Professional]] (Ch 6–7, Ch 12), [[2024-JavaScript Design Patterns]] (Ch 1–2), [[2026-Clean Code with TypeScript]] (Ch 2–3), MDN Web Docs (`developer.mozilla.org`)

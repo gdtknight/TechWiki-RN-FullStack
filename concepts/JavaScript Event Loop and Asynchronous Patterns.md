@@ -20,7 +20,7 @@ tags:
   - debouncing
   - concurrency
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # JavaScript Event Loop and Asynchronous Patterns
@@ -91,6 +91,7 @@ flowchart LR
 
 ## 관련 개념 및 엔티티
 
+- **선행 학습 (입문자용)**: [[JS 첫걸음 11 - 비동기 기초]] — 동기/비동기, Promise, `async`/`await`, 이벤트 루프의 간단한 모형을 먼저 익히는 레슨 ([[JS 첫걸음 00 - 로드맵|시리즈 로드맵]])
 - **상위/연관 개념**: [[JavaScript Execution Context, Closures, and Prototype]], [[Virtual DOM and Reconciliation from Scratch]], [[React Fiber and Reconciliation]], [[React Native Architecture (Bridge to New Architecture)]], [[Full-Stack Authentication, Token Refresh, and Observability]]
 - **구현 기술/엔티티**: [[JavaScript (ECMAScript)]], [[TypeScript]], [[TanStack Query and Zustand]]
 - **출처 문헌**: [[2021-JavaScript from Beginner to Professional]] (Ch 13), [[2021-JavaScript Cookbook 3e]] (Ch 9, Ch 13), [[2024-JavaScript Design Patterns]] (Ch 7–8), [[2024-Build a Frontend Web Framework (From Scratch)]] (Ch 13), [[2025-TypeScript 5 Design Patterns and Best Practices 2nd Edition]] (Ch 8), [[2026-Clean Code with TypeScript]] (Ch 6–7), [[2026-Full-Stack React TypeScript and Node 2nd Edition]] (Ch 8, Ch 12), MDN Web Docs (`developer.mozilla.org`)
