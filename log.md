@@ -271,3 +271,45 @@
   - 추가: 0.77의 `isolation`·`outlineSpread`, `backgroundImage` 그라디언트(0.87에서 `experimental_` 접두사 제거, 최초 도입 버전은 미확인), 0.88 `fontVariationSettings`, 0.81 `<SafeAreaView>` 사용 중단.
 - **[[React]]**: React Foundation 소유권 이전(2026-02-24), React Compiler v1.0, 19.2·19.3 신규 API, RN별 React 반영 버전(0.80→19.1.0, 0.83→19.2, 0.88→19.3.0) 추가.
 - **[[Expo]]**: 런타임 아키텍처 비교 행, SDK 52–58과 RN 버전 대응표, SDK 58 요점 추가. "프레임워크 없는 방식은 예외적인 경우에만" 서술을 공식 문서 문구 기준으로 교정.
+
+## [2026-10-21] query | JavaScript 입문 레슨 시리즈 "JS 첫걸음" 시작 (로드맵 + 레슨 01–02)
+- **요청**: 기본 개념이 부족한 상태에서 JavaScript를 체계적으로 공부하고 싶음. 초등학생도 이해할 만큼 쉽고 자세한 설명.
+- **형식 결정 (사용자 선택)**: `syntheses/`에 위키 레슨 시리즈로 작성. 로드맵과 레슨 1–2를 먼저 쓰고 검토를 받은 뒤 나머지를 진행.
+- **생성된 Synthesis 페이지 (3개)**:
+  - [[JS 첫걸음 00 - 로드맵]]: 12개 레슨 구성, 레슨별 근거 장(입문서 PDF 쪽 범위), 마친 뒤 이어서 읽을 위키 페이지.
+  - [[JS 첫걸음 01 - 프로그램과 콘솔]]: 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 1 (p.26–41), MDN, Chrome DevTools 문서.
+  - [[JS 첫걸음 02 - 변수]]: 근거는 같은 책 Ch 2 (p.43–45), MDN *let*·*const*·*var*·*Grammar and types*·*Lexical grammar*·*Assignment*, Chrome DevTools 80 릴리스 노트.
+- **검증**: 레슨의 모든 예제 코드와 에러 메시지를 Node.js v24.19.0에서 실행해 확인함.
+- **입문서와 현재 공식 자료의 차이 (각 레슨의 "관점 비교" 절에 기록)**:
+  - "interpreted, 컴파일하지 않음" → MDN은 "interpreted (or just-in-time compiled)"
+  - "현재 표준은 ES6" → 최신 판은 ECMAScript 2026 (제17판, 2026년 6월)
+  - "var has global scope" → MDN은 "function-scoped or globally-scoped"
+- **인덱스 갱신**: `index.md` Syntheses 섹션에 3개 페이지 등록 (누적 73개 위키 페이지: Sources 34개, Concepts 24개, Entities 9개, Syntheses 6개).
+
+## [2026-10-21] query | JS 첫걸음 레슨 03 (자료형) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 03 - 자료형]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 2 (p.45–57)와 MDN *JavaScript data types and data structures*·*Template literals*·*NaN*·*Falsy*.
+- **검증**: 예제·퀴즈의 코드와 결과를 Node.js v24.19.0에서 모두 실행해 확인함.
+- **입문서와의 차이 ("관점 비교" 절에 기록)**:
+  - Number의 한계를 2^53−1로 설명 → MDN상 이 값은 정수를 정확하게 다룰 수 있는 범위(`MAX_SAFE_INTEGER`)임
+  - p.56의 "빈 문자열, `null`, `undefined`만 `false`" → MDN falsy 목록 9개로 보충
+  - 출력 예시의 `Undefined`(대문자 U) 인쇄 오류
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 03 상태를 작성 완료로 변경, 링크 추가), [[JS 첫걸음 02 - 변수]](다음 레슨 링크), `index.md` Syntheses 섹션.
+- 참고 출처의 MDN 링크는 클릭 가능한 마크다운 링크로 작성함 (레슨 01–02의 참고 출처도 같은 날 링크 형식으로 바꿈).
+
+## [2026-10-21] query | JS 첫걸음 레슨 04 (연산자) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 04 - 연산자]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 2 (p.57–70)와 MDN *Operator precedence*·*Remainder*·*Increment*·*Strict equality*·*Logical AND*·*Logical OR*·*NaN*·*Less than*·*Window: prompt()*.
+- **검증**: 예제·퀴즈·"자주 하는 실수" 코드를 Node.js v24.19.0에서 모두 실행해 확인함 (`8 <= 20 <= 13` → `true` 포함).
+- **입문서와의 차이 ("관점 비교" 절에 기록)**:
+  - p.63 우선순위 표에서 `**`를 전위 `++`보다 위에 둠 → MDN 기준 전위 연산자(14)가 거듭제곱(13)보다 먼저
+  - p.62 후위 `++`를 "나중에 실행된다"고 설명 → MDN: 즉시 증가하고 증가 전 값을 돌려줌
+  - p.67–68 `&&`·`||`가 불리언을 돌려준다고 설명 → MDN: 피연산자 값 중 하나를 그대로 돌려줌
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 04 작성 완료), [[JS 첫걸음 03 - 자료형]](다음 레슨 링크), `index.md` Syntheses 섹션.
+
+## [2026-10-21] query | JS 첫걸음 레슨 05 (조건문) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 05 - 조건문]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 4 (p.96–111)와 MDN *if...else*·*switch*·*Conditional (ternary) operator*·*Empty statement*.
+- **검증**: 예제·퀴즈·"자주 하는 실수" 코드를 Node.js v24.19.0에서 모두 실행해 확인함. 입문서 p.98에 인쇄된 `==` 코드도 실행해 설명과 다른 결과(`else` 쪽 실행)가 나오는 것을 확인함.
+- **입문서와의 차이 ("관점 비교" 절에 기록)**:
+  - p.98 "흔한 실수" 예제의 인쇄 오류 (본문은 `=` 하나를 설명, 코드는 `==`)
+  - p.98의 "이퀄 두 개(`==`)를 쓰라"는 권고 → 이 시리즈는 `===`
+  - p.101 삼항 연산자로 실행 코드를 고르는 예 → 이 시리즈는 값 고르기에만 씀 (판단)
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 05 작성 완료), [[JS 첫걸음 04 - 연산자]](다음 레슨 링크), `index.md` Syntheses 섹션.

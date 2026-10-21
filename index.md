@@ -98,6 +98,12 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 
 - [[RAG vs GraphRAG vs LLM Wiki]] — 전통적 벡터 RAG, GraphRAG, 그리고 현재 구축된 마크다운 기반 LLM Wiki 아키텍처의 지식 컴파일 시점·복합 추론·가독성 비교.
 - [[React Native Learning Roadmap and Evolution (2019-2022)]] — MarginNote 4 PDF 21권 + Apple Books EPUB 9권(총 30권)을 유기적으로 결합한 풀스택 · 모바일 · DevOps · AI 엔지니어링 마스터 학습 로드맵.
+- [[JS 첫걸음 00 - 로드맵]] — 프로그래밍을 처음 배우는 사람을 위한 JavaScript 기초 레슨 시리즈(12개 레슨) 안내. 레슨 구성(비유 → 직접 해 보기 → 정리 → 자주 하는 실수 → 퀴즈), 레슨 순서와 근거 장, 마친 뒤 읽을 위키 페이지.
+- [[JS 첫걸음 01 - 프로그램과 콘솔]] — 프로그램·코드·JavaScript 엔진·ECMAScript의 뜻, 브라우저 콘솔 열기와 `console.log()`, 들여쓰기·세미콜론·주석, 초보자가 자주 만나는 `SyntaxError`/`ReferenceError`.
+- [[JS 첫걸음 02 - 변수]] — 이름표 붙은 상자 비유로 배우는 변수, `let`/`const` 선언과 대입(`=`), `undefined`, 이름 짓기 규칙과 카멜 케이스, `var`를 쓰지 않는 이유, TDZ 에러와 Chrome 콘솔의 `let` 재선언 예외.
+- [[JS 첫걸음 03 - 자료형]] — 기본 자료형 7가지, 문자열(따옴표·이스케이프·템플릿 리터럴), 숫자와 안전한 정수 범위·`NaN`, 불리언, `undefined` vs `null`, `typeof`와 `typeof null` 버그, 암묵적 형 변환(`2 + "2"`)과 `String()`/`Number()`/`Boolean()`, falsy 값.
+- [[JS 첫걸음 04 - 연산자]] — 산술 연산자와 나머지 `%`(짝수·홀수, 분→시간), 우선순위와 괄호, `+=`·`++` 줄여 쓰기, `===` vs `==`, 크기 비교, `&&`/`||`/`!` 진리표와 실제 반환값, 초보자가 자주 하는 비교 실수.
+- [[JS 첫걸음 05 - 조건문]] — 갈림길 비유로 배우는 `if`/`else`/`else if`(위에서부터 처음 참인 곳 하나만), 조건의 truthy/falsy 판단, 삼항 연산자, `switch`·`break`·`default`·폴스루와 `===` 비교, 상황별 선택 기준, `if (x = y)`·`if (...);` 실수.
 - [[React and React Native Internal Implementation Deep Dive]] — Fiber Reconciler 데이터 구조(Double Buffering, workLoop), Hooks Dispatcher/연결 리스트, `react-reconciler` 호스트 분리, 구형 Bridge 병목 및 New Architecture(JSI, Fabric, Yoga C++ Shadow Tree, Hermes AOT) 심층 분석.
 
 ---
