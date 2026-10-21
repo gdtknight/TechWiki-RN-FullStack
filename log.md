@@ -327,3 +327,62 @@
 - **미생성 엔티티 후보 (언급 파일 수)**: Node.js(27), Express(13), Next.js(13), Redux(11), GraphQL(11), Hermes(11), Kubernetes(10), MongoDB(8), OpenTelemetry(8), Zod(7), Prisma(7), Docker(7).
 - **이전 점검에서 넘어온 미해결 항목**: [[React Native Learning Roadmap and Evolution (2019-2022)]] 제목·범위 불일치(이름 변경 제안), 도서 Source 31개의 `source_type` 필드 누락(기본값 `book`이라 규칙 위반은 아님).
 - **다음 Ingest 추천**: JS 첫걸음 레슨 06–11은 이미 투입된 [[2021-JavaScript from Beginner to Professional]]·[[2015-인사이드 자바스크립트]]로 충분함. 위키 확장용 추천은 이전 점검과 같음 (MarginNote4 `Node.js/2025-Node.js Projects`, `API Design/2021-GraphQL in Action`, `Testing/2022-Full Stack Testing`, `PostgreSQL/2026-Just Use Postgres`. 제목 기준이며 목차는 미확인).
+
+## [2026-10-21] query | JS 첫걸음 레슨 06 (반복문) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 06 - 반복문]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 5 (p.112–140)와 MDN *while*·*do...while*·*for*·*break*·*continue*·*for...in*.
+- **범위 결정**: `for...of`(p.126)와 `for...in`(p.128)은 배열·객체를 배운 뒤에 다루도록 레슨 08·09로 넘기고, 이 레슨에서는 미리 보기만 둠.
+- **검증**: 예제·퀴즈·"자주 하는 실수" 코드를 Node.js v24.19.0에서 모두 실행해 확인함. 무한 루프 예(p.135, `while` 안의 `continue`)는 `perl` alarm으로 2초 뒤 강제 종료해 `1`만 출력하고 멈추지 않는 것을 확인함.
+- **입문서와의 차이 ("관점 비교" 절에 기록)**:
+  - p.113 `while` 예제의 인쇄된 출력이 `1`부터 시작함 (실제는 `0`–`9`)
+  - p.127 "`for...of`는 무한 루프에 빠지지 않는다" → 반복 도중 같은 배열에 `push`하면 끝나지 않는 것을 실행으로 확인함
+  - p.129 "`for...in` 순서는 보장되지 않는다" → MDN: 최신 명세에서 순서가 정해져 있음
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 06 작성 완료), [[JS 첫걸음 05 - 조건문]](다음 레슨 링크), [[2021-JavaScript from Beginner to Professional]](레슨 목록), `index.md` Syntheses 섹션.
+
+## [2026-10-21] query | JS 첫걸음 레슨 07 (함수) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 07 - 함수]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 6 (p.142–155, p.163–169)과 MDN *Functions*(가이드)·*Parameter*·*Default parameters*·*return*·*Arrow function expressions*·*Callback function*.
+- **범위 결정**: 스코프·IIFE·중첩 함수(p.155–166)는 레슨 10으로, spread·rest(p.150–152)는 레슨 08로 넘김. 로드맵의 레슨 08·10 근거 쪽수도 갱신함.
+- **검증**: 예제·퀴즈·"자주 하는 실수" 코드를 Node.js v24.19.0에서 모두 실행해 확인함 (`return` 줄바꿈 → `undefined`, `doTwice(cheer())` → `TypeError`, 함수 표현식 호이스팅 → `ReferenceError` 포함).
+- **입문서와의 차이 ("관점 비교" 절에 기록)**:
+  - p.167 이름 없는 함수 단독 선언 → 실행하면 `SyntaxError: Function statements require a function name`
+  - p.163 "멈추지 않는다"는 무한 재귀 → 실제로는 `RangeError: Maximum call stack size exceeded`로 멈춤
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 07 작성 완료), [[JS 첫걸음 06 - 반복문]](다음 레슨 링크), [[2021-JavaScript from Beginner to Professional]](레슨 목록), `index.md` Syntheses 섹션.
+
+## [2026-10-21] query | JS 첫걸음 레슨 08 (배열) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 08 - 배열]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 3 (p.72–85), Ch 5 (p.123–127), Ch 6 (p.150–152), Ch 8 (p.201–206)과 MDN *Array*·*at*·*push*·*includes*·*find*·*forEach*·*map*·*filter*·*sort*·*Spread syntax*·*for...of*·*const*.
+- **검증**: 예제·퀴즈·"자주 하는 실수" 코드를 Node.js v24.19.0에서 모두 실행해 확인함.
+- **입문서와의 차이 ("관점 비교" 절에 기록)**:
+  - p.83 "`sort()`는 숫자를 작은 것부터 정렬" → 기본 정렬은 글자 순서. `[40, 1, 5, 200].sort()` → `[ 1, 200, 40, 5 ]`
+  - p.76 `cars[-1] = "Fiat"`이 "생겨난다" → 칸이 아니라 별도 속성이 되며 `length`는 그대로
+- **작성 중 교정**: `pop`이 뺀 값을 돌려준다는 서술에 p.80을 근거로 붙였으나 원문에 해당 문장이 없어, 실행 결과를 근거로 바꿈.
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 08 작성 완료), [[JS 첫걸음 07 - 함수]](다음 레슨 링크), `index.md` Syntheses 섹션.
+
+## [2026-10-21] query | JS 첫걸음 레슨 09 (객체) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 09 - 객체]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 3 (p.72, p.86–94), Ch 5 (p.127–131)와 MDN *Working with objects*·*Object initializer*·*Object.entries()*·*for...in*·*Optional chaining*.
+- **입문서 범위 밖에서 추가한 내용**: 메서드 기초(입문서는 Ch 7로 미룸), `{ ...obj }` 복사와 객체 `===` 비교, `TypeError: Cannot read properties of undefined`와 `?.`. 근거는 MDN과 실행 결과.
+- **검증**: 예제·퀴즈·"자주 하는 실수" 코드를 Node.js v24.19.0에서 모두 실행해 확인함.
+- **입문서와의 차이**: p.86 `typeof` 출력 예시의 `Object`(대문자 O) 인쇄 오류 → 실제 `object`.
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 09 작성 완료), [[JS 첫걸음 08 - 배열]](다음 레슨 링크), `index.md` Syntheses 섹션.
+
+## [2026-10-21] query | JS 첫걸음 레슨 10 (스코프와 클로저) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 10 - 스코프와 클로저]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 6 (p.155–162, p.165–166, p.172), [[2015-인사이드 자바스크립트]] Ch 5 (PDF p.148, p.156–169), MDN *Scope*·*Closures*·*Strict mode*·*var*.
+- **검증**: 예제·퀴즈 코드를 Node.js v24.19.0에서 모두 실행해 확인함 (`var` 반복 클로저 `4 4 4` → `let`이면 `1 2 3`, 엄격 모드에서 선언 없는 대입 → `ReferenceError` 포함). 매개변수 예제 이름은 브라우저 전역 `name`과 겹치지 않게 `petName`으로 정함.
+- **출처와의 차이 ("관점 비교" 절에 기록)**:
+  - [[2015-인사이드 자바스크립트]] p.148 "오직 함수만이 유효 범위" → ES6 이후 `let`·`const`는 블록 스코프
+  - 같은 책 p.169 반복문 클로저를 즉시 실행 함수로 해결 → `let`만으로 해결됨
+  - 입문서 p.161 선언 없는 대입 → 엄격 모드·모듈에서는 `ReferenceError`
+  - 입문서 p.172 장 요약의 `var` 설명이 같은 장 본문(p.157–158)과 맞지 않음
+- **작성 중 교정**: [[2015-인사이드 자바스크립트]] "함수의 캡슐화" 절 인용 쪽을 p.163–165로 적었다가 원문 대조 후 PDF p.164–166으로 고침.
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 10 작성 완료), [[JS 첫걸음 09 - 객체]](다음 레슨 링크), `index.md` Syntheses 섹션.
+
+## [2026-10-21] query | JS 첫걸음 레슨 11 (비동기 기초) 작성
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 11 - 비동기 기초]]. 근거는 [[2021-JavaScript from Beginner to Professional]] Ch 13 (p.370–386)과 MDN *setTimeout()*·*Promise*·*async function*·*await*·*Using the Fetch API*·*JavaScript execution model*.
+- **범위 결정**: Microtask/Macrotask 구분과 `Promise.all`은 다루지 않고 [[JavaScript Event Loop and Asynchronous Patterns]]로 안내함. `fetch`는 MDN 예제의 모양만 소개함 (네트워크가 필요해 실행 검증 대상에서 제외).
+- **검증**: `fetch` 외의 예제·퀴즈 코드를 Node.js v24.19.0에서 모두 실행해 확인함 (`await` 없이 출력 → `Promise { <pending> }`, 비 async 함수 안의 `await` → `SyntaxError`, 잡지 않은 rejection → 종료 코드 1 포함).
+- **입문서와의 차이 ("관점 비교" 절에 기록)**: p.380 "이벤트 루프가 실제 일을 하는 실행자이며 콜 스택을 감시한다"는 설명 → MDN 실행 모델 기준으로 정리. p.378 "`await`는 async 함수에서만" → 모듈 최상위에서도 가능.
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 11 작성 완료), [[JS 첫걸음 10 - 스코프와 클로저]](다음 레슨 링크), `index.md` Syntheses 섹션.
+
+## [2026-10-21] query | JS 첫걸음 레슨 12 (모듈과 다음 단계) 작성 — 시리즈 완료
+- **생성된 Synthesis 페이지**: [[JS 첫걸음 12 - 모듈과 다음 단계]]. 근거는 MDN *JavaScript modules*·*export*·*await*·*Scope*, Node.js *ECMAScript modules* 문서, [[2021-JavaScript from Beginner to Professional]] Ch 1 (p.34–35), Ch 15 (p.428–430, p.440–445). 입문서에 모듈 장이 없어 공식 문서를 주 근거로 씀.
+- **검증**: `.mjs` 파일로 `export`/`import`, 기본 내보내기, `as`, 모듈 최상위 `await`, 모듈 엄격 모드를 Node.js v24.19.0에서 실행해 확인함. 실수 예 3건(없는 이름, 기본 내보내기에 중괄호, `./` 누락)의 에러 문구도 실행 결과 그대로 실음. `.js` 파일에서 `import`를 써도 Node.js v24에서 에러가 나지 않아 실수 목록에서 뺌.
+- **다음 단계 안내**: 시리즈 회고 표와 이 위키에서 이어 읽을 페이지(JS 개념 3개 → TypeScript → React → React Native·Expo → 학습 로드맵)를 정리함.
+- **연결 갱신**: [[JS 첫걸음 00 - 로드맵]](레슨 12 작성 완료, 12개 레슨 전체 완료), [[JS 첫걸음 11 - 비동기 기초]](다음 레슨 링크), [[2021-JavaScript from Beginner to Professional]](레슨 01–12 목록과 관점 비교 요약), `index.md` Syntheses 섹션.

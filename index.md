@@ -104,6 +104,13 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - [[JS 첫걸음 03 - 자료형]] — 기본 자료형 7가지, 문자열(따옴표·이스케이프·템플릿 리터럴), 숫자와 안전한 정수 범위·`NaN`, 불리언, `undefined` vs `null`, `typeof`와 `typeof null` 버그, 암묵적 형 변환(`2 + "2"`)과 `String()`/`Number()`/`Boolean()`, falsy 값.
 - [[JS 첫걸음 04 - 연산자]] — 산술 연산자와 나머지 `%`(짝수·홀수, 분→시간), 우선순위와 괄호, `+=`·`++` 줄여 쓰기, `===` vs `==`, 크기 비교, `&&`/`||`/`!` 진리표와 실제 반환값, 초보자가 자주 하는 비교 실수.
 - [[JS 첫걸음 05 - 조건문]] — 갈림길 비유로 배우는 `if`/`else`/`else if`(위에서부터 처음 참인 곳 하나만), 조건의 truthy/falsy 판단, 삼항 연산자, `switch`·`break`·`default`·폴스루와 `===` 비교, 상황별 선택 기준, `if (x = y)`·`if (...);` 실수.
+- [[JS 첫걸음 06 - 반복문]] — 줄넘기 비유와 반복의 세 재료(시작·조건·변화), `while`/`do...while`/`for`의 실행 시점 차이, `break`·`continue`, 구구단과 별 계단으로 배우는 중첩 반복, 무한 루프가 생기는 세 가지 경우.
+- [[JS 첫걸음 07 - 함수]] — 자판기 비유로 배우는 함수 정의·호출, 매개변수와 인수·기본값, `console.log`와 `return`의 차이, 함수 표현식과 화살표 함수의 자동 `return` 규칙, 콜백과 `setTimeout`, 재귀 맛보기, 호이스팅·`return` 줄바꿈 실수.
+- [[JS 첫걸음 08 - 배열]] — 번호 붙은 사물함 비유로 배우는 배열과 0부터 시작하는 인덱스, `length`·`at(-1)`, `push`/`pop`/`shift`/`unshift`/`splice`, `includes`·`indexOf`·`find`, `for...of`·`forEach`, `map`·`filter`, 숫자 `sort()`의 글자순 함정, `...` 펼치기와 복사.
+- [[JS 첫걸음 09 - 객체]] — 이름표 달린 서랍장 비유로 배우는 객체와 배열의 쓰임 구분, 점·대괄호 표기법, 속성 추가·삭제, 객체가 담긴 배열과 `filter`/`map`/`find`, `for...in`과 `Object.keys`/`values`/`entries`, 메서드, `{ ...obj }` 복사와 `===` 비교, `?.`.
+- [[JS 첫걸음 10 - 스코프와 클로저]] — 집·동네 비유로 배우는 전역·지역·블록 스코프, 스코프 체인과 렉시컬 스코프, 같은 이름 가리기, 선언 없는 대입과 엄격 모드, 소풍 가방 비유의 클로저(카운터·저금통·`makeAdder`), 반복문 `var` 클로저 함정과 `let` 해결, IIFE 맛보기.
+- [[JS 첫걸음 11 - 비동기 기초]] — 식당 진동벨 비유로 배우는 동기 vs 비동기, `setTimeout`의 실행 순서, Promise 세 상태와 `.then`/`.catch`, `async`/`await`(그 함수만 기다림), `fetch` 모양, `try...catch...finally`, 이벤트 루프 간단 모형.
+- [[JS 첫걸음 12 - 모듈과 다음 단계]] — 레고 정리함 비유로 배우는 모듈, Node.js로 파일 실행, `export`/`import`, 이름 붙은 내보내기 vs 기본 내보내기, 모듈 스코프와 엄격 모드, 시리즈 회고와 이 위키에서 이어 읽을 페이지(TypeScript → React → React Native·Expo).
 - [[React and React Native Internal Implementation Deep Dive]] — Fiber Reconciler 데이터 구조(Double Buffering, workLoop), Hooks Dispatcher/연결 리스트, `react-reconciler` 호스트 분리, 구형 Bridge 병목 및 New Architecture(JSI, Fabric, Yoga C++ Shadow Tree, Hermes AOT) 심층 분석.
 
 ---
