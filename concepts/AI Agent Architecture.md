@@ -7,6 +7,8 @@ sources:
   - "[[2026-AI 에이전트를 깊이 이해하기]]"
   - "[[2024-Prompt Engineering for LLMs]]"
   - "[[2025-Open Source Observability]]"
+  - "[[2026-하네스 엔지니어링 with 클로드 코드]]"
+  - "[[2026-AI Evals in Practice]]"
 tags:
   - ai-agents
   - architecture
@@ -15,7 +17,7 @@ tags:
   - post-training
   - software-engineering
 created: 2026-10-18
-updated: 2026-10-19
+updated: 2026-10-23
 ---
 
 # AI Agent Architecture
@@ -90,8 +92,21 @@ flowchart LR
 
 ---
 
+## 관점 비교: 하네스 엔지니어링의 정의
+
+| | [[2026-AI 에이전트를 깊이 이해하기]] | [[2026-하네스 엔지니어링 with 클로드 코드]] |
+|---|---|---|
+| 정의 | 모델 가중치 바깥에서 에이전트의 상한과 신뢰성을 정하는 시스템 공학 (위 정의 절) | "하네스란 모델의 가중치를 바꾸지 않고, 모델 바깥의 권한·도구·검증·상태·관측을 설계해 에이전트가 일하게 하는 환경입니다." (p.34) |
+| 구성 요소 | 컨텍스트 엔지니어링, 메모리·지식 베이스, 도구 생태계, 상호작용 인터페이스, 오케스트레이션/가드레일 | 권한, 도구, 검증, 상태, 관측 (p.34) |
+| 프롬프트·컨텍스트와의 관계 | 컨텍스트 엔지니어링을 하네스의 한 요소로 둠 | "하네스 엔지니어링 ⊇ 컨텍스트 엔지니어링 ⊇ 프롬프트 엔지니어링" (p.35) |
+| 강조점 | 루프 설계, KV 캐시, 평가와 사후 학습 | 단일 에이전트의 자기 검증 한계를 역할 분리(생성-검증 팀)와 **구조적 강제**(도구 목록, 훅)로 보완 |
+
+두 책 모두 "모델은 그대로 두고 주변을 설계한다"는 점은 같다. 차이는 분류 축이다: 앞 책은 에이전트가 **무엇을 받는가**(컨텍스트·메모리·도구), 뒤 책은 에이전트가 **무엇을 할 수 있고 어떻게 확인되는가**(권한·검증·관측)에 무게를 둔다 (판단). Claude Code에서의 구현은 [[Claude Code Harness Design (Agents, Skills, and Orchestration)]], 평가 방법은 [[LLM Evaluation (Evals, LLM-as-Judge, and Agent Trajectories)]].
+
+---
+
 ## 관련 개념 및 엔티티
 
-- **하위/심화 개념**: [[Context Engineering]], [[Agent Memory and Knowledge]], [[Multi-Agent Orchestration]], [[Beyond Vibe Coding and AI-Augmented Software Engineering]]
+- **하위/심화 개념**: [[Context Engineering]], [[Agent Memory and Knowledge]], [[Multi-Agent Orchestration]], [[Beyond Vibe Coding and AI-Augmented Software Engineering]], [[Claude Code Harness Design (Agents, Skills, and Orchestration)]], [[LLM Evaluation (Evals, LLM-as-Judge, and Agent Trajectories)]], [[LLM Cost Engineering (Token Economics, Caching, and Routing)]]
 - **관련 기술/엔티티**: [[Model Context Protocol (MCP)]], [[LangGraph]]
-- **출처 문헌**: [[2025-Building Applications with AI Agents]], [[2026-AI 에이전트를 깊이 이해하기]], [[2024-Prompt Engineering for LLMs]], [[2025-Open Source Observability]]
+- **출처 문헌**: [[2025-Building Applications with AI Agents]], [[2026-AI 에이전트를 깊이 이해하기]], [[2024-Prompt Engineering for LLMs]], [[2025-Open Source Observability]], [[2026-하네스 엔지니어링 with 클로드 코드]], [[2026-AI Evals in Practice]]

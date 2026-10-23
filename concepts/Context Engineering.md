@@ -7,6 +7,8 @@ sources:
   - "[[2026-AI 에이전트를 깊이 이해하기]]"
   - "[[2024-Prompt Engineering for LLMs]]"
   - "[[2025-비욘드 바이브 코딩 (Beyond Vibe Coding)]]"
+  - "[[2026-The AI Cost Playbook]]"
+  - "[[2026-하네스 엔지니어링 with 클로드 코드]]"
 tags:
   - context-engineering
   - orchestration
@@ -15,7 +17,7 @@ tags:
   - elastic-snippets
   - ai-agents
 created: 2026-10-18
-updated: 2026-10-19
+updated: 2026-10-23
 ---
 
 # Context Engineering
@@ -47,6 +49,8 @@ updated: 2026-10-19
   2. **Append-Only 메시지 루프**: 이전 턴의 메시지를 중간에서 수정하지 않고 끝에 추가만 한다.
   3. **에이전트 상태 표시줄(Status Bar) 후미 배치**: 현재 작업 진행률, 할 일 목록(`todo`), 열린 파일 상태 등 매 스텝 변하는 메타 정보는 컨텍스트의 **가장 마지막(최신 User/Tool 메시지 끝)** 에 부착하여 앞단 수만 토큰의 KV Cache 적중률을 90% 이상 유지한다.
 
+- **비용 관점의 같은 원칙**: [[2026-The AI Cost Playbook]]은 "The single most important principle for prompt caching is: stable content first, variable content last." (p.73)라고 하고, [[2026-하네스 엔지니어링 with 클로드 코드]]는 안정적 접두사·추가 전용·바이트 동일 접두사를 캐시 3원칙으로 든다 (p.298). Anthropic 문서 기준 캐시 수명(5분/1시간), 모델별 최소 길이, 손익분기는 [[LLM Cost Engineering (Token Economics, Caching, and Routing)]] 3절.
+
 ### 2. 탄력적 스니펫(Elastic Snippets)과 토큰 예산 최적화 (`2024-Prompt Engineering for LLMs` `Ch 5–6`)
 - GitHub Copilot 설계자인 John Berryman과 Albert Ziegler가 제시한 **탄력적 스니펫(Elastic Snippets)** 패턴은 반응형 웹 디자인처럼 **제한된 토큰 예산(Token Budget) 안에 가장 가치 있는 정보 조각을 동적으로 맞춰 넣는 알고리즘**이다:
   - 각 컨텍스트 후보(예: 현재 파일, 임포트된 타입 정의, 관련 RAG 문서, 이전 대화)를 여러 해상도(전체 본문 -> 요약/시그니처만 -> 생략)와 우선순위 점수로 정의한다.
@@ -75,6 +79,6 @@ updated: 2026-10-19
 ## 관련 개념 및 엔티티
 
 - **상위 개념**: [[AI Agent Architecture]], [[Multi-Agent Orchestration]], [[Beyond Vibe Coding and AI-Augmented Software Engineering]]
-- **연관 개념**: [[Agent Memory and Knowledge]], [[RAG vs GraphRAG vs LLM Wiki]], [[AI-Enhanced React Applications and Specification-Driven Development]]
+- **연관 개념**: [[Agent Memory and Knowledge]], [[RAG vs GraphRAG vs LLM Wiki]], [[AI-Enhanced React Applications and Specification-Driven Development]], [[LLM Cost Engineering (Token Economics, Caching, and Routing)]], [[Claude Code Harness Design (Agents, Skills, and Orchestration)]]
 - **관련 프로토콜**: [[Model Context Protocol (MCP)]]
-- **출처 문헌**: [[2025-Building Applications with AI Agents]] (Ch 5), [[2026-AI 에이전트를 깊이 이해하기]] (Ch 3, Ch 5), [[2024-Prompt Engineering for LLMs]] (Ch 5–7), [[2025-비욘드 바이브 코딩 (Beyond Vibe Coding)]] (Ch 2–3)
+- **출처 문헌**: [[2025-Building Applications with AI Agents]] (Ch 5), [[2026-AI 에이전트를 깊이 이해하기]] (Ch 3, Ch 5), [[2024-Prompt Engineering for LLMs]] (Ch 5–7), [[2025-비욘드 바이브 코딩 (Beyond Vibe Coding)]] (Ch 2–3), [[2026-The AI Cost Playbook]] (Ch 6), [[2026-하네스 엔지니어링 with 클로드 코드]] (부록 D)

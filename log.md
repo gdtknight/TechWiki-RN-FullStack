@@ -450,3 +450,18 @@
 - **책이 맞는 것으로 확인**: Error Boundary의 한계 목록(react.dev *Component*), 세션 유휴·절대·갱신 타임아웃(OWASP *Session Management*).
 - **실행 확인 (React 19.3.1 + jsdom)**: Error Boundary는 `useEffect` 안의 동기 오류는 잡고(`onCaughtError` 호출), Effect 안의 Promise 오류와 이벤트 처리기 오류는 잡지 못함 → 책의 "`useEffect` 오류에는 `useErrorBoundary`" 설명을 "비동기 작업일 때"로 좁혀 기록.
 - **미확인으로 남김**: React Native의 테스트 도구(RN 공식 *Testing* 문서 미투입), Expo OTA 업데이트와 모바일 다중 버전 운영(EAS Update 문서로 확인 필요), 책의 `onReset`에서 `window.location.reload()`가 "fetch data from the cache"한다는 서술(p.244)은 근거를 찾지 못해 위키에 옮기지 않음.
+
+## [2026-10-23] ingest | AI 도서 3권: 하네스 엔지니어링 with 클로드 코드, AI Evals in Practice, The AI Cost Playbook
+- **투입 범위 (모두 partial)**:
+  - 하네스 엔지니어링(황민호, 한빛미디어 2026): 1–6장, 8장, 부록 A 일부(p.274–275), 부록 D 앞부분 정독.
+  - AI Evals in Practice(Caio Incau, Packt 2026), The AI Cost Playbook(같은 저자): PDF 텍스트 층이 글꼴 인코딩 문제로 거의 전 쪽 깨져 있어 pymupdf로 200dpi 렌더링 후 macOS Vision 프레임워크 OCR(Swift 도구를 작업 폴더에 빌드)로 전 쪽을 읽음. Evals는 Ch 1·5·8·13, Cost는 Ch 2·6·8(앞부분)·10 정독.
+- **생성 (6개)**: [[2026-하네스 엔지니어링 with 클로드 코드]], [[2026-AI Evals in Practice]], [[2026-The AI Cost Playbook]], [[Claude Code Harness Design (Agents, Skills, and Orchestration)]], [[LLM Evaluation (Evals, LLM-as-Judge, and Agent Trajectories)]], [[LLM Cost Engineering (Token Economics, Caching, and Routing)]]
+- **갱신 (3개)**: [[AI Agent Architecture]] (하네스 정의 관점 비교: Bojie Li의 5요소 vs 황민호의 5축), [[Multi-Agent Orchestration]] (4절 여섯 가지 팀 패턴), [[Context Engineering]] (캐시 원칙과 비용 페이지 연결)
+- **공식 문서 대조 — Claude Code** (code.claude.com *Subagents*·*Skills*·*Agent teams*, CHANGELOG, 로컬 2.1.309):
+  - 책의 `TeamCreate`·`TeamDelete`는 2.1.178에서 제거됨 (지금은 Agent 도구의 `name`으로 팀원 생성).
+  - 에이전트 팀은 "experimental and disabled by default"인데 책 전체에서 이 전제를 찾지 못함.
+  - 책의 "공식 문서는 2개 이상 협업 시 반드시 팀을 먼저 검토하라고 권고"는 공식 문서("check whether a lighter option does the job")와 방향이 반대.
+  - 에이전트 `name`은 파일명과 일치할 필요 없음(책은 "반드시 일치"). 스킬 `allowed-tools`는 제한이 아니라 그 턴의 사전 허가(책은 제한 수단으로 설명).
+  - 맞는 것: `disallowedTools` 적용 순서, 에이전트 저장 위치 5곳 우선순위, 팀 3–5명, 스킬 목록 예산 1%.
+- **공식 문서 대조 — Anthropic 가격·캐싱**: 하네스 책 가격표의 Opus 4.6($15/$75)·Haiku 4.5($0.80/$4)는 공식($5/$25, $1/$5)과 다름(각각 Opus 4.1·Haiku 3.5 가격). Cost Playbook의 `pricing.yaml`도 Haiku 4.5를 $0.80/$4, ID `claude-haiku-4-5-20250514`로 씀(공식 ID `claude-haiku-4-5-20251001`). 캐시 TTL 5분·Sonnet 4.6 최소 1,024토큰·배치 50%는 맞음. 이후 바뀐 것: 1시간 TTL, 자동 캐싱, 모델별 최소 길이(512–4,096), 5.x 세대의 더 큰 캐시 할인, extended thinking deprecated, 컨텍스트 1M.
+- **미확인으로 남김**: 하네스 책의 "클로드 코드 내부 문서/오케스트레이션 공식 가이드" 인용과 292개 에이전트·메시지 50개 제한 사례(공식 문서에서 찾지 못함), 스킬 목록 "대체 한도 약 8,000자", LLM 판정 모델에 `temperature=0`을 쓰면 결정적이라는 권고(현재 API 레퍼런스에서 `temperature` 항목을 찾지 못함), 각 책의 외부 사례·설문 수치(원 출처 미확인).

@@ -4,6 +4,7 @@ title: "Multi-Agent Orchestration"
 category: "G. Artificial Intelligence/Agents"
 sources:
   - "[[2025-Building Applications with AI Agents]]"
+  - "[[2026-하네스 엔지니어링 with 클로드 코드]]"
 tags:
   - multi-agent
   - orchestration
@@ -11,7 +12,7 @@ tags:
   - actor-model
   - distributed-systems
 created: 2026-10-18
-updated: 2026-10-18
+updated: 2026-10-23
 ---
 
 # Multi-Agent Orchestration
@@ -42,11 +43,26 @@ updated: 2026-10-18
 - **액터 프레임워크 (Actor Frameworks, p.217)**: **Ray**, **Orleans**, **Akka** 등을 활용해 상태를 가진 에이전트(Actor)의 생명주기와 메시지 패싱을 대규모로 관리.
 - **Meta-Agent Search (MAS, p.206, p.339)**: 다양한 에이전트 아키텍처·컴포넌트·구성을 자동으로 탐색하고 평가해 최적의 에이전트 구성을 찾아내는 기법.
 
+### 4. 여섯 가지 팀 패턴 ([[2026-하네스 엔지니어링 with 클로드 코드]] 8장)
+
+원칙 셋 (p.154): 문제의 구조를 먼저 보면 패턴은 따라온다, 실전에서는 단계(Phase)마다 다른 패턴을 섞는다, 계층은 2단계 이내.
+
+| 패턴 | 모양 | 언제 (책) | 주의 (책) |
+|---|---|---|---|
+| **파이프라인** | 앞 단계 출력이 다음 단계 입력 | 강한 순서 의존 (p.155) | 중간이 느리면 전체 대기, 병렬화 불가 (p.156) |
+| **팬아웃·팬인** | 같은 입력을 여러 관점이 동시에, 리더가 통합 | 같은 입력을 다른 관점으로 볼 때 (p.157) | 모든 메시지가 리더를 거치면 순차로 퇴행 (p.157, p.170) |
+| **전문가 풀** | 라우터가 N명 중 한 명에게만 보냄 | 입력 유형이 뚜렷이 나뉠 때 (p.159) | 라우터 오분류가 엉뚱한 곳에 수정을 남김. 애매하면 사람에게 (p.158–159) |
+| **생성-검증** | 만들고 검사하고 다시 만듦 | 검증 기준이 명확할 때 (p.160) | 재시도 상한(2–3회)과 상한 도달 시 에스컬레이트 필수 (p.159, p.161) |
+| **감독자** | 작업 큐에서 워커가 스스로 작업을 가져감(work-stealing) | 작업 수·처리 시간이 들쭉날쭉할 때 (p.163) | 워커를 늘려도 감독자 부담이 비례해 커짐 (p.164) |
+| **계층적 위임** | 총괄 → 팀장 → 실무자 | 독립 하위 영역으로 나뉘는 큰 문제 (p.166) | 3단계 이상은 요약·재해석이 누적되어 지연과 의도 손실 (p.165) |
+
+1절의 감독자/계층형은 이 표의 감독자·계층적 위임에, 2절의 스웜은 중앙 감독자가 없다는 점에서 이 표에 직접 대응하는 패턴이 없다 (판단). Claude Code 에이전트 팀에서는 팀원이 다시 팀을 만들 수 없으므로("No nested teams", Claude Code 공식 문서 *Agent teams*), 책은 1단계를 팀으로, 2단계를 서브에이전트로 구성하는 방식을 든다 (p.166). 구현 방법은 [[Claude Code Harness Design (Agents, Skills, and Orchestration)]] 5절.
+
 ---
 
 ## 관련 개념 및 엔티티
 
 - **상위 개념**: [[AI Agent Architecture]]
-- **연관 개념**: [[Context Engineering]]
+- **연관 개념**: [[Context Engineering]], [[Claude Code Harness Design (Agents, Skills, and Orchestration)]]
 - **구현 프레임워크**: [[LangGraph]]
-- **출처 문헌**: [[2025-Building Applications with AI Agents]] (Ch 2 p.54, Ch 5 p.111, Ch 8 p.185–224)
+- **출처 문헌**: [[2025-Building Applications with AI Agents]] (Ch 2 p.54, Ch 5 p.111, Ch 8 p.185–224), [[2026-하네스 엔지니어링 with 클로드 코드]] (8장 p.152–171)
