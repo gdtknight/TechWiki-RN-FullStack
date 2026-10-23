@@ -22,11 +22,14 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - [[2026-Clean Code with TypeScript]] — Rukevwe Ojigbo, Dr. Sanjay Krishna Anbalagan (Packt, 2026). 클린 함수와 합성 원칙, TDD/비동기 에러/성능 프로파일링, Nx 모노레포, OpenAPI + Orval + React Query 계약 우선 개발 및 JSON 런타임 검증 게이트(Runtime Gate). `[E. Programming Languages/JavaScript-TypeScript]`
 - [[2026-Full-Stack React TypeScript and Node 2nd Edition]] — David Choi, Cihan Yakar (Packt, 2026). React 19 + TypeScript + Express/Hono + Prisma 7(PostgreSQL) 풀스택 아키텍처, Argon2 해싱 및 `jose` JWT 이중 토큰 순환, 401 동시 갱신 경쟁 상태(Single-Flight Mutex) 해결, OpenTelemetry 관측성, `CLAUDE.md` 스펙 주도 AI 개발. `[H. Information Systems/Full Stack]`
 - [[2026-React Application Architecture for Production Second Edition]] — Alan Alickovic, Anthony Alicea (Packt, 2026). Feature 기반 폴더 구조, OpenAPI 코드 생성 + React Query, 5대 상태 분리, 상태 코로케이션, 다국어/접근성/테스팅/CI·CD, 웹·모바일 코드 공유를 위한 Monorepo 및 BFF 아키텍처. `[H. Information Systems/React]`
+- [[2026-Web Performance Engineering in the Age of AI]] — Addy Osmani (O'Reilly, 2026). Core Web Vitals(LCP·INP·CLS)와 실험실/현장 측정, AI가 생성한 React 코드의 성능 함정, Chrome 렌더러 구조와 렌더링 파이프라인 6단계, 메인 스레드 스케줄러와 양보, SSR 하이드레이션 비용, JavaScript의 비용, 서드파티 스크립트 관리. `[H. Information Systems/Web Infrastructure]` (부분 투입)
 - [[2025-Advanced Front-End Development]] — Nitesh Upadhyaya (Apress, 2025). Vite, 스타일링 전략(CSS Modules, CSS-in-JS, Tailwind), Context vs Redux Toolkit, 성능/테스팅, 웹 보안(XSS/CSRF/CSP), 접근성(a11y)/국제화(i18n), CI/CD, Stripe 결제 연동 이커머스 풀 프로젝트. `[H. Information Systems/React]`
 - [[2025-Building Applications with AI Agents]] — Michael Albada (O'Reilly, 2025). 프로덕션 AI 에이전트 시스템의 4대 구성요소(Model, Tools, Memory, Orchestration), Context Engineering, GraphRAG, 멀티에이전트 아키텍처, 운영/보안 총론. `[G. Artificial Intelligence/Agents]`
+- [[2025-Full Stack JavaScript Strategies]] — Milecia McGregor (O'Reilly, 2025). 시니어 관점의 풀스택 의사결정 체크리스트: NestJS 백엔드, React 프론트엔드의 상태(reducer·atom·mutable)·데이터(TanStack Query)·접근성·Error Boundary·세션 보안·성능·테스트(Vitest·MSW·Cypress/Playwright/Nightwatch), 블루-그린·카나리 배포와 롤백, CircleCI 파이프라인. 2024년 초 기준이라 FID·CRA·`git revert` 등 공식 문서와 다른 서술 11건을 대조 기록 (Part III·Ch 24–27 정독, partial).
 - [[2025-MongoDB 8.0 in Action, Third Edition]] — Arek Borucki (Manning, 2025). BSON 도큐먼트 모델링(Embedding vs Referencing), 5대 스키마 디자인 패턴, 집계 파이프라인(`$lookup`, `$unwind`, `$group`), ESR 복합 인덱스 규칙, WiredTiger 멀티 도큐먼트 ACID 트랜잭션 및 Atlas Vector Search(`$vectorSearch`) RAG 챗봇 구축. `[Apple Books/Database & Backend]`
 - [[2025-Open Source Observability]] — Peter Corless, Neha Pawar (O'Reilly, 2025). 모놀리식 APM을 넘어선 분리형 오픈소스 관측성 스택(Observability 2.0: OpenTelemetry + Kafka + 고카디널리티 OLAP 스토리지 + Grafana) 및 AI/LLM 관측성 가이드. `[Apple Books/DevOps & Cloud]`
 - [[2025-TypeScript 5 Design Patterns and Best Practices 2nd Edition]] — Theofanis Despoudis (Packt, 2025). TypeScript 5 신기능(`satisfies`, `const` 제네릭, 표준 데코레이터), Branded Types, 판별 유니온, GoF 23개 디자인 패턴, 함수형 모나드(`Option`/`Either`), SOLID/DDD, Apollo Client 및 tRPC 내부 아키텍처. `[E. Programming Languages/JavaScript-TypeScript]`
+- [[2025-Web Browser Engineering]] — Pavel Panchekha, Chris Harrelson (Oxford University Press, 2025). Python으로 브라우저를 직접 만들며 배우는 HTML 트리 파싱, 레이아웃 트리, CSS, JavaScript 실행, 작업 큐와 렌더링 주기, `requestAnimationFrame`, 메인/브라우저(컴포지터) 스레드와 commit, GPU 래스터와 합성, 증분 레이아웃. `[H. Information Systems/Full Stack]` (부분 투입)
 - [[2025-비욘드 바이브 코딩 (Beyond Vibe Coding)]] — Addy Osmani (O'Reilly, 2025). 바이브 코딩에서 AI 보조 엔지니어링으로의 전환, '70%의 문제(The 70% Problem)'와 '다수결의 함정(Majority Problem)' 돌파, AI 생성 코드 리뷰·보안 감사·테스팅 및 자율형 백그라운드 코딩 에이전트 실전 가이드. `[Apple Books/AI & Software Engineering]`
 - [[2024-Build a Frontend Web Framework (From Scratch)]] — Ángel Sola Orbaiceta (Manning, 2024). 외부 라이브러리 없이 순수 JS로 Virtual DOM(`h`, `mountDOM`, `destroyDOM`), 재조정 Diff 알고리즘(`objectsDiff`, `arraysDiffSequence`, `patchDOM`, `key` Prop), 컴포넌트 상태/생명주기, SPA 라우터를 밑바닥부터 구현. `[H. Information Systems/Full Stack]`
 - [[2024-Fluent React]] — Tejas Kumar (O'Reilly, 2024). React 내부 작동 원리(JSX 컴파일, Virtual DOM, Stack vs Fiber Reconciler, Render/Commit 단계, 호스트 렌더러 분리, Concurrent React & Render Lanes, SSR/Hydration, React Server Components, React Compiler) 심층 해부. `[H. Information Systems/React]`
@@ -77,6 +80,14 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - [[Mobile Layout and Styling with Flexbox]] — CSS-in-JS(`StyleSheet`), 웹 CSS와 다른 모바일 Flexbox 기본값(`flexDirection: 'column'`), Yoga 레이아웃 엔진, 플랫폼 분기(`Platform`) 및 다크모드/UI Kit 패턴.
 - [[React Native Gesture and Animation System]] — 내장 `Animated` API와 `PanResponder` 제스처 상태 머신, 구형 Bridge의 16ms 프레임 드롭 한계, 그리고 UI 스레드(Worklet)에서 직접 실행되는 `React Native Reanimated` 비교.
 - [[Offline-First and Mobile State Management]] — 모바일 상태의 4계층(로컬 Hooks, Context API, Zustand/RTK, TanStack Query/Apollo GraphQL) 및 `NetInfo` + `AsyncStorage` 기반 오프라인 감지·로컬 캐싱·재연결 동기화 아키텍처.
+- [[Browser Rendering Pipeline and Frame Lifecycle]] — HTML·CSS·JS가 픽셀이 되는 단계(파싱 → 스타일 → 레이아웃 → 페인트 → 합성), 렌더링 차단 리소스, 60fps 프레임 예산과 jank, 속성별로 다시 도는 단계, 레이아웃 스래싱, 이벤트 루프 속 렌더링과 `requestAnimationFrame`, 메인·컴포지터 스레드.
+- [[Web Performance Metrics and Core Web Vitals]] — LCP·INP·CLS의 정의와 기준(75번째 백분위), TBT·TTI·긴 작업(50 ms)과 양보, 실험실 vs 현장 측정, React 코드에서 지표가 나빠지는 흔한 원인과 대응, React Native와의 관계.
+- [[React Component Lifecycle and Effects]] — 트리거→렌더→커밋→페인트, `useEffect`/`useLayoutEffect` 실행 시점(공식 문서 + React 19.3.1 실행 결과), 의존성·정리 함수, Strict Mode 두 번 실행, Effect가 필요 없는 경우, 클래스 생명주기 대응.
+- [[React Native Rendering and App Lifecycle]] — RN 렌더 파이프라인(Render→Commit→Mount), UI·JS 스레드, New Architecture의 동기 `useLayoutEffect`, `AppState`, 화면을 언마운트하지 않는 내비게이션과 `useFocusEffect`.
+- [[Frontend Error Handling and Error Boundaries]] — Error Boundary가 잡는 오류와 못 잡는 오류(react.dev + React 19.3.1 실행: `useEffect` 동기 오류는 잡고 비동기·이벤트 처리기 오류는 못 잡음), 앱·레이아웃·컴포넌트 세 수준 경계, `onCaughtError`/`onUncaughtError` 기록, 입력 검증·API 오류 처리.
+- [[Frontend Security and Session Management]] — 브라우저에 내려간 것은 모두 보인다는 전제, 비즈니스 로직 검증, OWASP 세션 타임아웃(유휴·절대·갱신), 프론트엔드 환경 변수와 `localStorage` 토큰 저장의 위험, JWT는 기본적으로 암호화가 아님, 로그에 토큰 남기지 않기.
+- [[Frontend Testing Strategy (Unit, Mocking, and E2E)]] — 무엇을 테스트할지 고르는 기준, Vitest·React Testing Library 단위 테스트와 훅 모킹 함정(`mockReturnValue` vs `Once`), MSW 시작 대기, Cypress·Playwright·Nightwatch 비교와 공식 문서 기준 예제 보정, 테스트 피라미드.
+- [[Deployment Strategies, Environments, and Rollbacks]] — 프론트·백엔드 분리 배포 순서, API·UI 버전 관리, 블루-그린과 카나리(책 정의 vs Kubernetes 문서 정의), build·test·deploy 파이프라인과 Git 훅·브랜치 보호, feature·dev·staging·prod 환경, 롤백(`git revert`는 새 커밋을 만듦)과 핫픽스.
 
 ---
 
@@ -91,6 +102,7 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - [[TanStack Query and Zustand]] — 웹 React와 React Native에서 고전 Redux 보일러플레이트를 대체하는 원격 서버 상태 반응형 캐싱(`TanStack Query`) 및 초경량 셀렉터 기반 클라이언트 스토어(`Zustand`, `Redux Toolkit`) 표준 조합.
 - [[Expo]] — 네이티브 빌드 설정 없이 빠른 모바일 앱 개발·실기기 테스트(Expo Go, Snack)·배포를 지원하는 유니버설 React Native 플랫폼 (Managed vs Bare Workflow 비교, 최신 CNG `npx expo prebuild` · Development Build 기준 보강).
 - [[React Navigation]] — 모바일 화면 전환 표준 라이브러리 (`NavigationContainer`, Stack / Native Stack, Bottom Tab, Drawer 내비게이터 아키텍처 및 라우트 파라미터 제어).
+- [[Web Browser Architecture (Chromium Blink)]] — 멀티 프로세스와 렌더러 프로세스, 메인·컴포지터·래스터·워커 스레드의 역할, Blink 작업 스케줄러와 `scheduler.postTask`/`yield`, RenderingNG, React Native 렌더링과의 비교.
 
 ---
 
@@ -111,6 +123,16 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - [[JS 첫걸음 10 - 스코프와 클로저]] — 집·동네 비유로 배우는 전역·지역·블록 스코프, 스코프 체인과 렉시컬 스코프, 같은 이름 가리기, 선언 없는 대입과 엄격 모드, 소풍 가방 비유의 클로저(카운터·저금통·`makeAdder`), 반복문 `var` 클로저 함정과 `let` 해결, IIFE 맛보기.
 - [[JS 첫걸음 11 - 비동기 기초]] — 식당 진동벨 비유로 배우는 동기 vs 비동기, `setTimeout`의 실행 순서, Promise 세 상태와 `.then`/`.catch`, `async`/`await`(그 함수만 기다림), `fetch` 모양, `try...catch...finally`, 이벤트 루프 간단 모형.
 - [[JS 첫걸음 12 - 모듈과 다음 단계]] — 레고 정리함 비유로 배우는 모듈, Node.js로 파일 실행, `export`/`import`, 이름 붙은 내보내기 vs 기본 내보내기, 모듈 스코프와 엄격 모드, 시리즈 회고와 이 위키에서 이어 읽을 페이지(TypeScript → React → React Native·Expo).
+- [[렌더링 첫걸음 00 - 로드맵]] — 브라우저 렌더링 → React 생명주기 → React Native 생명주기를 잇는 레슨 시리즈(00–09, 각 레슨에 "더 깊이" 심화 절).
+- [[렌더링 첫걸음 01 - 브라우저는 화면을 어떻게 그릴까]] — 공장 비유로 배우는 렌더링 파이프라인 6단계, DOM, 레이아웃·페인트·합성, 렌더링 차단, 다시 그리기.
+- [[렌더링 첫걸음 02 - 프레임과 이벤트 루프]] — 플립북 비유의 프레임과 16.7 ms 예산, 이벤트 루프 속 렌더링, 긴 작업과 양보, INP, `requestAnimationFrame`.
+- [[렌더링 첫걸음 03 - React 첫 만남]] — 컴포넌트·JSX·props·state, 지역 변수와 state의 차이, 스냅샷과 갱신 함수, `key`.
+- [[렌더링 첫걸음 04 - 렌더와 커밋]] — 트리거 → 렌더 → 커밋 → 페인트, 바뀐 DOM만 수정, state는 위치에 붙음, `key`로 초기화, 렌더 순수성.
+- [[렌더링 첫걸음 05 - 생명 주기와 useEffect]] — 마운트·업데이트·언마운트, Effect의 설정·의존성·정리, 실행 순서 실험, 정리 누락 버그.
+- [[렌더링 첫걸음 06 - Effect 심화]] — `useLayoutEffect`, 상호작용이 원인인 Effect, Strict Mode 두 번 실행, Effect가 필요 없는 경우, 경쟁 상태와 `ignore`.
+- [[렌더링 첫걸음 07 - React Native는 화면을 어떻게 그릴까]] — Render → Commit(Yoga) → Mount, Shadow Tree 구조 공유, UI·JS 스레드와 두 프레임 레이트, 동기 `useLayoutEffect`, View Flattening.
+- [[렌더링 첫걸음 08 - 앱과 화면의 생명 주기]] — 컴포넌트·화면·앱 세 겹 생명 주기, `AppState`, 언마운트되지 않는 화면, `useFocusEffect`·`useIsFocused`, Page Visibility API.
+- [[렌더링 첫걸음 09 - 버튼 하나를 누르면]] — 클릭 한 번의 웹·RN 타임라인(실행 순서 실험), INP 세 구간, 웹·RN 성능 체크리스트, 시리즈 정리.
 - [[React and React Native Internal Implementation Deep Dive]] — Fiber Reconciler 데이터 구조(Double Buffering, workLoop), Hooks Dispatcher/연결 리스트, `react-reconciler` 호스트 분리, 구형 Bridge 병목 및 New Architecture(JSI, Fabric, Yoga C++ Shadow Tree, Hermes AOT) 심층 분석.
 
 ---

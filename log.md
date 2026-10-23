@@ -397,3 +397,56 @@
 - **모순 점검**: 레슨에서 교재 오류로 짚은 주제(숫자 `sort`, `for...in` 순서, `var` 범위, 이벤트 루프 설명, 함수만 유효 범위)를 기존 페이지에서 검색함. 상충하는 서술 없음.
 - **양방향 연결 보강 (3개 문서)**: [[2015-인사이드 자바스크립트]] → [[JS 첫걸음 10 - 스코프와 클로저]], [[JavaScript Execution Context, Closures, and Prototype]] → 레슨 10 (선행 학습), [[JavaScript Event Loop and Asynchronous Patterns]] → [[JS 첫걸음 11 - 비동기 기초]] (선행 학습).
 - **미해결 (이전 점검에서 넘어옴)**: [[React Native Learning Roadmap and Evolution (2019-2022)]] 제목·범위 불일치, 도서 Source의 `source_type` 필드 누락(기본값 `book`), 미생성 엔티티 후보 Node.js·Express·Next.js·Redux·GraphQL·Hermes.
+
+## [2026-10-21] ingest | Web Browser Engineering (2025) · Web Performance Engineering in the Age of AI (2026)
+- **원천 PDF (2권, 부분 투입)**:
+  - `/Users/yoshin/Documents/MarginNote4/H. Information Systems/Full Stack/2025-Web Browser Engineering-Pavel Panchekha,Chris Harrelson-Oxford University Press, USA.pdf` (529p). 전 16장의 도입부와 요약 절, 12장(p.276–300)과 13장 핵심 절(p.316–324, p.336–337)을 정독함.
+  - `/Users/yoshin/Documents/MarginNote4/H. Information Systems/Web Infrastructure/2026-Web Performance Engineering in the Age of AI-Addy Osmani-O'Reilly Media, Incorporated.pdf` (256p). 2장 CWV 절, 4장 앞부분, 5장 전체(p.85–108), 7장 앞부분을 정독함. 이 책은 PDF 쪽과 인쇄 쪽이 달라 PDF 쪽으로 통일해 인용함.
+- **목적**: 브라우저 동작과 React·React Native 컴포넌트 생명 주기를 잇는 학습("렌더링 첫걸음" 레슨 시리즈)의 근거 확보.
+- **생성된 Source 페이지 (2개)**: [[2025-Web Browser Engineering]], [[2026-Web Performance Engineering in the Age of AI]]
+- **생성된 Concept 페이지 (2개)**: [[Browser Rendering Pipeline and Frame Lifecycle]], [[Web Performance Metrics and Core Web Vitals]]
+- **생성된 Entity 페이지 (1개)**: [[Web Browser Architecture (Chromium Blink)]]
+- **갱신된 기존 페이지 (2개)**:
+  - [[JavaScript Event Loop and Asynchronous Patterns]]: 1.1절 "렌더링은 어디에 끼어드나" 추가 (작업 → 마이크로태스크 → 렌더링 순서, 마이크로태스크 기아, `requestAnimationFrame`, 작업 우선순위)
+  - [[Next.js Rendering Strategies (SSR, SSG, ISR, and RSC)]]: 3.1.1절 "하이드레이션의 비용과 대안" 추가
+- **교차 확인한 공식 자료**: MDN *Critical rendering path*·*How browsers work*·*requestAnimationFrame()*·*Jank*, web.dev *Rendering performance*·*Web Vitals*·*Optimize long tasks*. 요약 도구가 만든 표현이 원문 인용처럼 들어가지 않도록, 원문 문장을 확인하지 못한 문구("the cheapest pathway", 속성 예시)는 인용에서 뺌.
+- **인덱스 갱신**: Sources 2, Concepts 2, Entities 1 추가.
+
+## [2026-10-21] query | 렌더링 첫걸음 시리즈 시작 (진행 중: 00–02) 및 React·RN 생명주기 개념 페이지
+- **생성**: [[React Component Lifecycle and Effects]], [[React Native Rendering and App Lifecycle]] (react.dev·reactnative.dev·React Navigation·Expo 원문, React 19.3.1+jsdom 실행 결과 근거), [[렌더링 첫걸음 00 - 로드맵]], [[렌더링 첫걸음 01 - 브라우저는 화면을 어떻게 그릴까]], [[렌더링 첫걸음 02 - 프레임과 이벤트 루프]].
+- **갱신**: [[Web React vs React Native Shared Core and Differences]] ("생명주기 100% 동일" → 훅 API는 같고 화면·앱 생명주기는 다름), [[React Hooks and Component Design Patterns]] (`useEffect`가 클릭 원인일 때 페인트 전 실행 가능).
+- **미완료 (사용 한도로 중단)**: 레슨 03–09 미작성(로드맵에 "예정"으로 표시), 위키 점검·커밋 미실시. 레슨 03 근거로 react.dev Learn 원본 마크다운 9개를 작업 폴더에 내려받아 둠.
+
+## [2026-10-21] query | 렌더링 첫걸음 시리즈 03–09 완성
+- **생성 (7개)**: [[렌더링 첫걸음 03 - React 첫 만남]], [[렌더링 첫걸음 04 - 렌더와 커밋]], [[렌더링 첫걸음 05 - 생명 주기와 useEffect]], [[렌더링 첫걸음 06 - Effect 심화]], [[렌더링 첫걸음 07 - React Native는 화면을 어떻게 그릴까]], [[렌더링 첫걸음 08 - 앱과 화면의 생명 주기]], [[렌더링 첫걸음 09 - 버튼 하나를 누르면]]. 로드맵 03–09행을 "작성 완료"로, 레슨 02의 "다음" 링크를 복원함.
+- **근거**: react.dev(Learn·Reference 원본 마크다운), reactnative.dev(*Render, Commit, and Mount*·*Threading Model*·*View Flattening*·*Performance Overview*·*AppState*), React Native 블로그 *The New Architecture is Here*, React Navigation 7.x 문서(현재 기본 버전), Expo *Router hooks*, MDN *Page Visibility API*, web.dev *INP*, [[2026-Web Performance Engineering in the Age of AI]] PDF p.68–72, [[2022-React and React Native, Fourth Edition]] PDF p.317, [[2025-Web Browser Engineering]] p.294.
+- **실행 확인 (React 19.3.1 + jsdom)**: Strict Mode 개발/프로덕션 Effect 로그와 `roomId` 변경, 경쟁 상태(`ignore` 유무), 파생 값 렌더 횟수(Effect 2배), 클릭 vs 타이머 갱신의 렌더·Effect 순서. React Native 예제는 실행 환경이 없어 미실행으로 표시함.
+- **기존 페이지 보정**:
+  - [[React Native Rendering and App Lifecycle]]: "AppState 문서에 useEffect 예제가 없음"은 **틀린 서술**이었음(예제가 Snack 플레이어 안에 URL 인코딩되어 있어 이전 확인에서 놓침) → 공식 예제로 교체. "웹 브라우저에는 이 구분이 없다"는 과한 서술 → Page Visibility API(`visibilitychange`)로 보정. Expo와 React Navigation의 `useFocusEffect` 정리 시점 표현 차이를 관점 비교에 추가(실제 동작 미확인).
+  - [[React Component Lifecycle and Effects]] 2.2절: 클릭/타이머 갱신 비교 실험 추가.
+  - [[Web Performance Metrics and Core Web Vitals]] 5절: React Native의 JS/UI 프레임 레이트, 5.1절 INP 세 구간 추가.
+- **확인한 버전 변화**: `InteractionManager`는 React Native 0.86 문서에서 Deprecated("use requestIdleCallback instead"), 현재 문서 경로는 404. React Navigation 7.x 문서는 아직 권장하므로 레슨 08 관점 비교에 기록.
+
+## [2026-10-21] lint | 렌더링 첫걸음 시리즈 완료 후 전체 100개 페이지 점검
+- **규모**: Sources 36, Concepts 28, Entities 10, Syntheses 26 = 100개. `index.md`와 100% 일치, 고아 페이지 0건.
+- **링크 무결성**: 실제 깨진 위키링크 0건. (검사 도구가 잡은 21건은 모두 코드 표기 `[[Prototype]]`·`[[Scope]]`·`[[위키링크]]`, 또는 CLAUDE.md·log.md 안의 설명용 예시임을 직접 확인)
+- **레슨 구조**: 렌더링 첫걸음 01–09의 이전/다음/로드맵 링크가 끊김 없이 이어짐. 로드맵 01–09행 모두 "작성 완료".
+- **수정 (5건)**:
+  - [[렌더링 첫걸음 05 - 생명 주기와 useEffect]] 1절 표: 위키링크의 `|`를 이스케이프하지 않아 표 열이 깨짐 → `\|`로 수정.
+  - [[렌더링 첫걸음 04 - 렌더와 커밋]] 6절: "심화 7.1절의 Fiber" → 실제 절 번호 10.1절로 수정.
+  - [[Browser Rendering Pipeline and Frame Lifecycle]]: 범위 표기 "내비게이션~합성"의 물결표 → 엔대시.
+  - [[React Hooks and Component Design Patterns]], [[React Component Lifecycle and Effects]]: 문장 중간에서 끊긴 react.dev 인용을 원문 문장 끝("…before the browser paints the updated screen")까지 맞춤.
+- **절 참조**: 레슨 01–09의 절 번호 참조 93건을 대상 문서의 제목과 대조함. 위 1건(레슨 04) 외에는 일치.
+- **예고 대조**: "레슨 NN에서 봅니다/다룹니다" 예고 9건을 해당 레슨 본문과 대조해 모두 내용이 있음을 확인함.
+- **외부 링크**: 레슨 00–09와 이번에 만든·고친 개념·소스 페이지의 외부 링크 41개가 모두 HTTP 200.
+- **모순 점검**: `InteractionManager` 권장 서술(다른 페이지에 없음), "`useEffect`는 항상 페인트 후" 서술(기존 페이지는 이미 보정 문구 포함)을 검색함.
+- **미해결**: Expo *Router hooks*와 React Navigation 7.x의 `useFocusEffect` 정리 시점 표현 차이(실제 동작 미확인, 앱에서 실행해 확인 필요). 이전 점검에서 넘어온 항목은 그대로 남음.
+
+## [2026-10-23] ingest | Full Stack JavaScript Strategies (Milecia McGregor, O'Reilly 2025)
+- **투입 범위 (partial)**: Part III 프론트엔드 Ch 13–22(PDF p.181–304)와 Part IV Ch 24–27(p.319–382) 정독, Ch 2 앞부분(p.43–45, p.53–54). 나머지는 목차로 요약. 예제 버전(NestJS 9.2.0, Vite 5.0.5, Node 20.10.0)과 실행 로그 날짜(2024-02-17)로 보아 2024년 초 기준.
+- **생성 (5개)**: [[2025-Full Stack JavaScript Strategies]], [[Frontend Error Handling and Error Boundaries]], [[Frontend Security and Session Management]], [[Frontend Testing Strategy (Unit, Mocking, and E2E)]], [[Deployment Strategies, Environments, and Rollbacks]]
+- **갱신 (4개)**: [[TanStack Query and Zustand]] (3절 신설: 상태 관리 세 접근, Context 성능, `staleTime`·`gcTime` 기준 시점, 서버 데이터 이중 보관), [[Web Performance Metrics and Core Web Vitals]] (6절 관점 비교: 책의 FID → INP), [[Container Infrastructure, Kubernetes, and CI-CD Pipelines]] (build·test·deploy 단계, 배포 전략 페이지 연결), [[Full-Stack Authentication, Token Refresh, and Observability]] (See Also)
+- **공식 문서와 대조해 기록한 책의 차이 (11건)**: FID→INP(web.dev 2024-01-31), CRA 지원 중단 시점(책 "early 2023" vs react.dev 2025-02-14), Valtio 스냅샷에 쓰기(문서: 스냅샷은 읽기 전용), `import.meta.env.API_URL`(Vite: `VITE_` 접두사만 노출), MSW 시작 미대기(문서: 반드시 await), `git revert` 설명(git 2.55 문서: 새 커밋을 기록), 카나리 정의(Kubernetes 문서: 새 버전을 기존 버전 옆에 배포), 로그에 인증 토큰 기록(OWASP: 남기지 않음), "JWT로 민감 정보 보호"(RFC 7519: 서명만 한 JWT는 암호화 아님), SSR과 RSC 혼용(react.dev Server Components), WebP·AVIF 지원(MDN: 주요 브라우저 지원, 대체 포맷 권장). 테스트 예제 3건(Playwright `await` 누락, `APIRequestContext`를 모킹으로 설명, `cy.find`를 `cy`에 바로 연결)과 Vitest `mockReturnValue` 연속 호출도 공식 문서와 대조해 개념 페이지에 기록.
+- **책이 맞는 것으로 확인**: Error Boundary의 한계 목록(react.dev *Component*), 세션 유휴·절대·갱신 타임아웃(OWASP *Session Management*).
+- **실행 확인 (React 19.3.1 + jsdom)**: Error Boundary는 `useEffect` 안의 동기 오류는 잡고(`onCaughtError` 호출), Effect 안의 Promise 오류와 이벤트 처리기 오류는 잡지 못함 → 책의 "`useEffect` 오류에는 `useErrorBoundary`" 설명을 "비동기 작업일 때"로 좁혀 기록.
+- **미확인으로 남김**: React Native의 테스트 도구(RN 공식 *Testing* 문서 미투입), Expo OTA 업데이트와 모바일 다중 버전 운영(EAS Update 문서로 확인 필요), 책의 `onReset`에서 `window.location.reload()`가 "fetch data from the cache"한다는 서술(p.244)은 근거를 찾지 못해 위키에 옮기지 않음.

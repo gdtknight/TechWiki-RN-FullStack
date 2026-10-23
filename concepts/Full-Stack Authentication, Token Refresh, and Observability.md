@@ -11,7 +11,7 @@ sources:
   - "[[2022-Real-World Next.js]]"
   - "[[2021-Do it! 리액트 네이티브 앱 프로그래밍]]"
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-23
 ---
 
 # Full-Stack Authentication, Token Refresh, and Observability
@@ -63,6 +63,7 @@ HTTP 클라이언트 래퍼(`fetch` 래퍼 또는 Axios 응답 인터셉터) 내
 ---
 
 ## 5. 관련 문서 (See Also)
+- [[Frontend Security and Session Management]] — 브라우저 쪽 보안: 세션 타임아웃(OWASP), `localStorage` 토큰 저장 위험, 프론트엔드 환경 변수, 로그에 토큰 남기지 않기
 - [[Type-Safe Contract-First and Runtime Boundary Architecture]] — 인증 및 비즈니스 API 페이로드의 런타임/컴파일 타임 타입 검증
 - [[Offline-First and Mobile State Management]] — 모바일 보안 스토리지 및 오프라인 재연결 시 인증 세션 동기화
 - [[Container Infrastructure, Kubernetes, and CI-CD Pipelines]] — 쿠버네티스 클러스터 모니터링 및 컨테이너 배포

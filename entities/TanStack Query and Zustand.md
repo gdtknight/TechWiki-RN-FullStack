@@ -6,6 +6,7 @@ category: "H. Information Systems/React"
 sources:
   - "[[2024-React in Depth]]"
   - "[[2026-React Application Architecture for Production Second Edition]]"
+  - "[[2025-Full Stack JavaScript Strategies]]"
 tags:
   - tanstack-query
   - react-query
@@ -15,8 +16,9 @@ tags:
   - data-fetching
   - react
   - react-native
+  - valtio
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-23
 ---
 
 # TanStack Query and Zustand
@@ -53,8 +55,47 @@ updated: 2026-10-19
 
 ---
 
+## 3. 관점 비교: [[2025-Full Stack JavaScript Strategies]] (Ch 15–16, 20)
+
+### 3.1 외부 상태 관리의 세 접근 (p.212)
+
+| 접근 | 책의 설명 | 예 (책) | 장점 | 단점 |
+|---|---|---|---|---|
+| **reducer** | "The reducer approach is the one that has a centralized source of truth." 모든 컴포넌트가 중앙에 액션을 보냄 | Redux, Zustand | 중앙 저장소, DevTools | 새 용어와 개념이 많음 |
+| **atom** | 상태를 작은 단위로 쪼개 훅으로 다루고, 작은 단위에서 상태를 파생 | Recoil, Jotai | React 기능과 잘 맞고 `useState`와 비슷함 | 상태를 그래프로 생각해야 해서 주니어에게 어려울 수 있음 |
+| **mutable** | 프록시로 직접 읽고 쓰는 가변 데이터 | MobX, Valtio | 의존성 자동 갱신, 리렌더 감소 | 언제 어떻게 바뀌는지 추적하기 어려움 |
+
+책은 예제에 Valtio를 쓰지만, 너무 이른 도입을 경계한다: "Implementing a state-management tool too early can slow development and add more complexity than needed." (p.216)
+
+**Valtio 예제의 오류**: 책은 `useSnapshot`이 돌려준 스냅샷에 값을 쓴다 (`orderSnap.orders = ...`, p.214–215). Valtio 문서: "Snapshots are read-only to render the JSX from their consistent view of the data. Mutations, and also any reads in callbacks that make mutations, need to be made via the proxy" ([*useSnapshot*](https://valtio.dev/docs/api/basic/useSnapshot)).
+
+### 3.2 Context는 성능 도구가 아니다 (p.211)
+
+책에 실린 Ethan Brown의 의견: "The problem is that context doesn't inherently do anything at all to improve performance and can even result in much worse performance if you're not considering how often the state in question is changing." 알맞은 예는 테마·언어·다크 모드·현재 사용자처럼 드물게 바뀌는 값이고, 나쁜 예는 표의 정렬·필터처럼 자주 바뀌는 값이다. 2절 표의 "Context: 부분 구독 기본 미지원" 행과 같은 이야기다.
+
+### 3.3 TanStack Query 캐시 설정 (p.271)
+
+책의 예: `staleTime: 1800000`(30분), `gcTime: 3600000`(1시간), `refetchInterval: 3600000`. 책의 주석은 `gcTime`을 "data stays in cache for 1 hour ... and is garbage collected afterwards"라고 설명한다.
+
+공식 문서로 보면 두 값의 기준 시점이 다르다:
+- `staleTime`: "A Query that has a `staleTime` set is considered **fresh** until that `staleTime` has elapsed." (*Important Defaults*)
+- `gcTime`: 쿼리를 쓰는 인스턴스가 **모두 사라진 뒤에** 타이머가 시작된다. "Since there are no more active instances of this query, a garbage collection timeout is set using `gcTime` to delete and garbage collect the query (defaults to **5 minutes**)." (*Caching Examples*)
+- `refetchInterval`: "which is independent of the `staleTime` setting" (*Important Defaults*)
+
+그러니 책의 주석은 "**사용하는 컴포넌트가 모두 사라진 뒤** 1시간"으로 읽어야 한다 (판단: 위 문장에서).
+
+### 3.4 서버 데이터를 다른 스토어에 복사하기 (p.222–223)
+
+책의 예제는 `useQuery`로 받은 데이터를 `useEffect`에서 Valtio 스토어로 다시 복사한다 (`orderStore.orders = orderData`). TanStack Query 문서는 역할을 이렇게 나눈다: "TanStack Query is a **server-state** library" / "Redux, MobX, Zustand, etc. are **client-state** libraries that _can be used to store asynchronous data, albeit inefficiently when compared to a tool like TanStack Query_" ([*Does TanStack Query replace Redux, MobX or other global state managers?*](https://tanstack.com/query/latest/docs/framework/react/guides/does-this-replace-client-state)). 같은 데이터를 두 곳에 두면 기준이 둘이 되므로, 서버 데이터는 쿼리 결과를 바로 쓰고 클라이언트 상태만 스토어에 두는 편이 이 페이지 개요의 분리 원칙(서버 상태는 TanStack Query, 클라이언트 상태는 Zustand 등)과 맞다 (판단). Effect로 값을 옮기는 비용은 [[React Component Lifecycle and Effects]]의 "You Might Not Need an Effect" 설명 참고.
+
+### 3.5 데이터 요청 라이브러리 고르는 기준 (p.218)
+
+캐시 관리, DevTools, 재시도, 오류 처리, 쿼리·뮤테이션, 지원 프로토콜, API 정의, 프레임워크 통합. 여기에 번들 크기·커뮤니티·문서·예제. 이미 Redux를 쓰면 RTK Query, 캐시·재요청을 기본으로 원하면 TanStack Query나 SWR (p.218). GraphQL이면 urql이나 Apollo Client (p.219).
+
+---
+
 ## 관련 링크
 
 - **연관 개념**: [[Offline-First and Mobile State Management]], [[React Hooks and Component Design Patterns]], [[Web React vs React Native Shared Core and Differences]]
 - **연관 엔티티**: [[React]], [[React Native]]
-- **출처 문헌**: [[2024-React in Depth]] (Ch 8–9, p.239–318), [[2026-React Application Architecture for Production Second Edition]] (Ch 5–6, p.136–194)
+- **출처 문헌**: [[2024-React in Depth]] (Ch 8–9, p.239–318), [[2026-React Application Architecture for Production Second Edition]] (Ch 5–6, p.136–194), [[2025-Full Stack JavaScript Strategies]] (Ch 15–16 p.207–227, Ch 20 p.270–271), TanStack Query [*Important Defaults*](https://tanstack.com/query/latest/docs/framework/react/guides/important-defaults), [*Caching Examples*](https://tanstack.com/query/latest/docs/framework/react/guides/caching)

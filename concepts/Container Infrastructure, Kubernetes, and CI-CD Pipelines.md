@@ -9,8 +9,9 @@ sources:
   - "[[2025-Open Source Observability]]"
   - "[[2022-Real-World Next.js]]"
   - "[[2026-React Application Architecture for Production Second Edition]]"
+  - "[[2025-Full Stack JavaScript Strategies]]"
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-23
 ---
 
 # Container Infrastructure, Kubernetes, and CI-CD Pipelines
@@ -104,9 +105,12 @@ flowchart LR
 | **3. 아티팩트/컨테이너 빌드** | 웹/백엔드는 멀티스테이지 Docker 이미지를 빌드해 레지스트리(GHCR/ECR)에 푸시하고, [[React Native]] 앱은 Android AAB / iOS IPA 서명 빌드를 수행 | [[2021-Hands-on GitHub Actions]] Ch 7, Ch 10 |
 | **4. 선언적 무중단 배포 (CD / GitOps)** | 쿠버네티스 매니페스트 저장소의 이미지 태그를 갱신하면 **Argo CD / GitOps**가 감지하여 Rolling Update, Blue-Green, 또는 Canary 방식으로 무중단 배포 | [[2021-컨테이너 인프라 환경 구축을 위한 쿠버네티스 도커]] 5장 |
 
+[[2025-Full Stack JavaScript Strategies]] (Ch 27)는 같은 흐름을 도구 중립적으로 **build → test → deploy** 세 단계로 정리하고, CircleCI로 예를 든다 (p.362–363, p.375–376). 원칙은 "One sign of a good pipeline is that you get failures as early in the pipeline as possible." (p.363) 이 책이 다루는 배포 전략(블루-그린·카나리의 정의 차이), feature·development·staging·production 환경, 롤백과 핫픽스는 [[Deployment Strategies, Environments, and Rollbacks]]에 정리했다.
+
 ---
 
 ## 5. 관련 문서 (See Also)
+- [[Deployment Strategies, Environments, and Rollbacks]] — 블루-그린·카나리 배포, 환경 구성, 롤백·핫픽스 절차
 - [[Full-Stack Authentication, Token Refresh, and Observability]] — 배포된 컨테이너 클러스터의 OpenTelemetry · Prometheus · Grafana 통합 관측성
 - [[Next.js Rendering Strategies (SSR, SSG, ISR, and RSC)]] — Next.js 애플리케이션의 Standalone Docker 컨테이너 배포
 - [[React Native Architecture (Bridge to New Architecture)]] — Gradle(Android) 및 CocoaPods/Xcode(iOS) 모바일 네이티브 빌드 파이프라인
