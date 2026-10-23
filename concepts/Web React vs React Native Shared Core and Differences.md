@@ -16,7 +16,7 @@ tags:
   - monorepo
   - architecture
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # Web React vs React Native Shared Core and Differences
@@ -46,7 +46,8 @@ flowchart TD
 
 | 아키텍처 영역 | 웹 React (`react-dom`) | 모바일 React Native (`react-native`) | 코드/지식 호환성 |
 |---|---|---|---|
-| **컴포넌트 생명주기 & Hooks** | `useState`, `useEffect`, `useLayoutEffect`, `useMemo`, `useCallback`, `useRef`, `useContext`, `useTransition` | **웹과 100% 동일** (`2023-Do it! 리액트` Ch 04 ↔ `2021-Do it! RN` Ch 04) | **100% 공유** |
+| **Hooks API & 컴포넌트 생명주기 규칙** | `useState`, `useEffect`, `useLayoutEffect`, `useMemo`, `useCallback`, `useRef`, `useContext`, `useTransition` | **훅의 문법과 규칙은 웹과 동일** (`2023-Do it! 리액트` Ch 04 ↔ `2021-Do it! RN` Ch 04) | **API는 공유** |
+| **화면·앱 생명주기** | 라우트를 떠나면 보통 화면 컴포넌트가 언마운트됨 | React Navigation은 "doesn't unmount screens when navigating away" → 포커스는 `useFocusEffect`/`useIsFocused`, 앱 포그라운드·백그라운드는 `AppState` ([[React Native Rendering and App Lifecycle]]) | **플랫폼별 상이** |
 | **전역 상태 & 서버 캐싱** | [[TanStack Query and Zustand\|TanStack Query, Zustand]], Redux Toolkit, Apollo Client | **웹과 100% 동일** (단, 영속화 스토리지만 `localStorage` 대신 `AsyncStorage`/MMKV 주입) | **95%+ 공유** |
 | **기본 UI 프리미티브** | HTML 태그 (`<div>`, `<p>`, `<img>`, `<input>`, `<ul>`) | 코어 네이티브 컴포넌트 (`<View>`, `<Text>`, `<Image>`, `<TextInput>`, `<FlatList>`) | 플랫폼 전용 |
 | **스타일링 & 레이아웃** | 브라우저 CSS 엔진, CSS Modules, TailwindCSS (`flex-direction: row` 기본) | [[Mobile Layout and Styling with Flexbox\|Yoga C++ 엔진, `StyleSheet.create`]] (`flexDirection: 'column'` 기본, 상속 없음) | 개념은 공유, 코드는 분리 (또는 NativeWind/Tamagui 사용) |
@@ -71,6 +72,7 @@ flowchart TD
 
 ## 관련 개념 및 엔티티
 
+- **렌더링·생명주기 비교**: [[Browser Rendering Pipeline and Frame Lifecycle]], [[React Component Lifecycle and Effects]], [[React Native Rendering and App Lifecycle]], [[렌더링 첫걸음 00 - 로드맵|렌더링 첫걸음 시리즈]]
 - **상위/연관 개념**: [[React Fiber and Reconciliation]], [[React Hooks and Component Design Patterns]], [[React Native Architecture (Bridge to New Architecture)]], [[Mobile Layout and Styling with Flexbox]], [[Offline-First and Mobile State Management]]
 - **구현 기술/엔티티**: [[React]], [[React Native]], [[TanStack Query and Zustand]], [[React Navigation]], [[Expo]]
 - **종합 로드맵/심층 분석**: [[React Native Learning Roadmap and Evolution (2019-2022)]], [[React and React Native Internal Implementation Deep Dive]]

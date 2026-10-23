@@ -8,8 +8,9 @@ sources:
   - "[[2024-Fluent React]]"
   - "[[2026-Build AI-Enhanced Web Apps]]"
   - "[[2026-React Application Architecture for Production Second Edition]]"
+  - "[[2026-Web Performance Engineering in the Age of AI]]"
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # Next.js Rendering Strategies (SSR, SSG, ISR, and RSC)
@@ -59,6 +60,15 @@ flowchart TB
 - 서버가 생성한 HTML은 아직 클릭 핸들러나 `useState`가 연결되지 않은 '메마른(Dry) 마크업'이다. 브라우저가 JS 번들을 로드해 가상 DOM 트리와 기존 DOM 노드를 매칭하며 이벤트 리스너를 연결하는 과정을 **하이드레이션(Hydration)** 이라 한다([[2024-Fluent React]] Ch 8).
 - **Hydration Mismatch 주의**: 컴포넌트 렌더링 본문에서 `typeof window !== 'undefined'`, `Date.now()`, `Math.random()`처럼 서버와 브라우저의 실행 결과가 다른 코드를 직접 렌더링하면 하이드레이션 에러가 발생한다. 브라우저 전용 로직은 반드시 `useEffect` 내부나 `dynamic(() => import(...), { ssr: false })`로 분리해야 한다([[2022-Real-World Next.js]] Ch 2).
 
+### 3.1.1 하이드레이션의 비용과 대안 ([[2026-Web Performance Engineering in the Age of AI]] Ch 5)
+- **빨리 보이지만 늦게 반응할 수 있다**: SSR은 LCP를 크게 줄일 수 있지만, 하이드레이션은 페이지 로드 중에 일어나는 추가 JavaScript 작업이고 "during hydration the page might not respond to input. It's not uncommon to see fast LCP but slow time to interactive (TTI) if hydration is heavy." (p.99) → 지표는 [[Web Performance Metrics and Core Web Vitals]].
+- **대안** (p.99–101):
+  - **부분 하이드레이션 / islands**: 상호작용이 필요한 부분만 하이드레이션 (Astro, Marko, Qwik, Fresh, Eleventy 등)
+  - **점진적 하이드레이션**: 덜 중요한 부분을 나중에(예: idle 시간에) 하이드레이션. 너무 미루면 사용자가 누를 때 반응하지 않을 수 있음
+  - **재개 가능성(resumability)**: Qwik처럼 상태를 HTML에 직렬화해 클라이언트에서 컴포넌트를 다시 실행하지 않음
+  - **React 18 선택적 하이드레이션**: 사용자가 상호작용하는 컴포넌트를 먼저 하이드레이션 (p.101)
+- 결론: "render on the server when you can; in the client, do as little work as possible to go interactive." (p.101)
+
 ### 3.2 Next.js 핵심 내장 컴포넌트 최적화 (`Ch 3, Ch 10`)
 - **`next/link` (`<Link>`)**: 뷰포트에 들어온 링크의 대상 페이지 코드와 정적 데이터를 백그라운드에서 **자동 프리페칭(Prefetching)** 하여 페이지 전환 시 즉각적인 클라이언트 사이드 네비게이션을 제공한다.
 - **`next/image` (`<Image>`)**: 기기 해상도에 맞춘 리사이징, 모던 포맷(WebP/AVIF) 자동 변환, 뷰포트 진입 시점 지연 로딩(Lazy Loading), 그리고 이미지 로드 전 자리 영역을 확보해 **CLS(Cumulative Layout Shift, 누적 레이아웃 이동)를 0으로 방지**한다.
@@ -79,6 +89,8 @@ flowchart TB
 
 ## 5. 관련 문서 (See Also)
 - [[React Fiber and Reconciliation]] — SSR, Streaming Suspense, Hydration 및 React Server Components 내부 원리
+- [[Browser Rendering Pipeline and Frame Lifecycle]] — 하이드레이션 같은 큰 JavaScript 작업이 메인 스레드와 렌더링을 막는 이유
+- [[Web Performance Metrics and Core Web Vitals]] — LCP·INP·CLS와 하이드레이션 비용
 - [[AI-Enhanced React Applications and Specification-Driven Development]] — Next.js App Router와 Vercel AI SDK를 결합한 AI 스트리밍 웹 앱 구축
 - [[Full-Stack Authentication, Token Refresh, and Observability]] — 쿠키/JWT 기반 풀스택 인증 아키텍처
 - [[Container Infrastructure, Kubernetes, and CI-CD Pipelines]] — Docker 및 Kubernetes 기반 컨테이너 배포

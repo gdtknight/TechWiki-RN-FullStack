@@ -10,6 +10,8 @@ sources:
   - "[[2025-TypeScript 5 Design Patterns and Best Practices 2nd Edition]]"
   - "[[2026-Clean Code with TypeScript]]"
   - "[[2026-Full-Stack React TypeScript and Node 2nd Edition]]"
+  - "[[2026-Web Performance Engineering in the Age of AI]]"
+  - "[[2025-Web Browser Engineering]]"
 tags:
   - javascript
   - event-loop
@@ -46,6 +48,25 @@ flowchart LR
 1. **Call Stack (호출 스택)**: 현재 실행 중인 함수들의 [[JavaScript Execution Context, Closures, and Prototype|실행 컨텍스트]]가 LIFO 순서로 쌓이는 단일 스레드 공간.
 2. **Microtask Queue (`Promise.then/catch/finally`, `await` 이후 코드, `queueMicrotask`)**: 현재 실행 중인 스크립트가 끝나고 Call Stack이 비는 즉시, 다음 화면 렌더링이나 일반 타이머보다 **항상 먼저** 큐가 빌 때까지 실행된다.
 3. **Macrotask / Task Queue (`setTimeout`, `setInterval`, UI I/O 이벤트)**: Microtask Queue가 완전히 비워진 뒤에 하나씩 Call Stack으로 이동해 실행된다 ([[2021-JavaScript from Beginner to Professional]], p.380–384).
+
+### 1.1 렌더링은 어디에 끼어드나 (브라우저)
+
+위 그림에는 **화면 그리기**가 빠져 있다. 브라우저에서 한 번의 이벤트 루프 순회는 "the browser picks a task from the queue, runs it to completion, then processes all queued microtasks. Finally, it may render an update before starting the next tick with another task." ([[2026-Web Performance Engineering in the Age of AI]] p.93)
+
+```mermaid
+flowchart LR
+    T["작업(Task) 1개<br/>끝까지 실행"] --> M["마이크로태스크<br/>전부 실행"]
+    M --> R{"렌더링할 때가 됐나?"}
+    R -->|"예"| RAF["requestAnimationFrame 콜백"] --> P["스타일 → 레이아웃 → 페인트 → 합성"]
+    R -->|"아니요"| N["다음 작업"]
+    P --> N
+```
+
+- **작업이 길면 그리지 못한다**: 작업은 끝까지 실행되며(run-to-completion), 그동안 렌더링과 입력 처리가 기다린다 (같은 책 p.93). 자세한 파이프라인은 [[Browser Rendering Pipeline and Frame Lifecycle]].
+- **마이크로태스크 기아(starvation)**: 마이크로태스크가 계속 새 마이크로태스크를 만들면 "the browser never gets a chance to render or handle user input" (같은 책 p.94). 큰 작업은 `setTimeout`이나 scheduler API로 나눠 양보한다.
+- **`requestAnimationFrame`**: 다음 페인트 직전에 실행되는 콜백 (MDN: "call a user-supplied callback function before the next repaint"). [[2025-Web Browser Engineering]]: "run code right before the browser runs its rendering pipeline" (p.288).
+- **작업 우선순위**: Chrome은 입력·애니메이션 작업을 `setTimeout`·네트워크 콜백보다 먼저 처리하려 하지만, 실행 중인 작업을 중간에 끊지는 못한다 (같은 책 p.96–98). `scheduler.postTask()`, `scheduler.yield()`로 우선순위와 양보를 지정할 수 있다 ([[Web Browser Architecture (Chromium Blink)]]).
+- **React Native**: 브라우저 렌더링 파이프라인 대신 Fabric 렌더러가 화면을 그린다 ([[React Native Rendering and App Lifecycle]]).
 
 ---
 
@@ -92,6 +113,7 @@ flowchart LR
 ## 관련 개념 및 엔티티
 
 - **선행 학습 (입문자용)**: [[JS 첫걸음 11 - 비동기 기초]] — 동기/비동기, Promise, `async`/`await`, 이벤트 루프의 간단한 모형을 먼저 익히는 레슨 ([[JS 첫걸음 00 - 로드맵|시리즈 로드맵]])
+- **렌더링과의 관계**: [[Browser Rendering Pipeline and Frame Lifecycle]], [[Web Performance Metrics and Core Web Vitals]], [[렌더링 첫걸음 00 - 로드맵|렌더링 첫걸음 시리즈]]
 - **상위/연관 개념**: [[JavaScript Execution Context, Closures, and Prototype]], [[Virtual DOM and Reconciliation from Scratch]], [[React Fiber and Reconciliation]], [[React Native Architecture (Bridge to New Architecture)]], [[Full-Stack Authentication, Token Refresh, and Observability]]
 - **구현 기술/엔티티**: [[JavaScript (ECMAScript)]], [[TypeScript]], [[TanStack Query and Zustand]]
 - **출처 문헌**: [[2021-JavaScript from Beginner to Professional]] (Ch 13), [[2021-JavaScript Cookbook 3e]] (Ch 9, Ch 13), [[2024-JavaScript Design Patterns]] (Ch 7–8), [[2024-Build a Frontend Web Framework (From Scratch)]] (Ch 13), [[2025-TypeScript 5 Design Patterns and Best Practices 2nd Edition]] (Ch 8), [[2026-Clean Code with TypeScript]] (Ch 6–7), [[2026-Full-Stack React TypeScript and Node 2nd Edition]] (Ch 8, Ch 12), MDN Web Docs (`developer.mozilla.org`)

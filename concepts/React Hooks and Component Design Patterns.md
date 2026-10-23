@@ -20,7 +20,7 @@ tags:
   - typescript
   - performance
 created: 2026-10-19
-updated: 2026-10-19
+updated: 2026-10-21
 ---
 
 # React Hooks and Component Design Patterns
@@ -45,7 +45,7 @@ updated: 2026-10-19
 | Hook | 핵심 용도 | 웹 & React Native 실전 주의점 |
 |---|---|---|
 | **`useState` vs `useReducer`** | 컴포넌트 로컬 상태 관리 | 독립적인 단순 값은 `useState`, 여러 하위 값이 함께 변하거나 다음 상태가 이전 상태에 복잡하게 의존할 때는 `useReducer` 사용 (`2024-Fluent React` p.141). |
-| **`useEffect` vs `useLayoutEffect`** | 외부 시스템 동기화 및 생명주기 이펙트 | `useEffect`는 화면이 그려진(Paint) 후 비동기로 실행되며, **`useLayoutEffect`는 Commit 직후 화면이 그려지기 전에 동기 실행**되어 레이아웃 깜빡임(Flicker)을 방지함 (`2021-Do it! RN` p.257). |
+| **`useEffect` vs `useLayoutEffect`** | 외부 시스템 동기화 및 생명주기 이펙트 | `useEffect`는 화면이 그려진(Paint) 후 비동기로 실행되며, **`useLayoutEffect`는 Commit 직후 화면이 그려지기 전에 동기 실행**되어 레이아웃 깜빡임(Flicker)을 방지함 (`2021-Do it! RN` p.257). 단, 공식 문서 기준 `useEffect`가 페인트 후에 실행되는 것은 "generally"이며, 클릭 같은 상호작용이 원인이면 "React may run your Effect before the browser paints the updated screen" (react.dev *useEffect* Caveats). 실행 순서 상세는 [[React Component Lifecycle and Effects]]. |
 | **`useRef` & `useImperativeHandle`** | 리렌더링을 유발하지 않는 가변 참조 보관 및 명령형 핸들 노출 | `forwardRef` + `useImperativeHandle`을 결합해 부모가 자식의 `focus()`, `scrollTo()` 등을 안전하게 캡슐화하여 호출 (`2021-Do it! RN` p.355). |
 | **`useMemo` & `useCallback`** | 계산 결과값 및 함수 참조(Reference) 캐싱 | `Object.is` 얕은 비교를 수행하는 의존성 배열에 매번 새로 생성되는 객체/함수를 넣으면 메모이제이션이 무력화됨 (`2024-React in Depth` p.101). 자식 컴포넌트가 `React.memo`로 감싸져 있거나 다른 훅의 의존성 배열에 들어갈 때만 선별적으로 사용 (`2024-Fluent React` p.115–135). |
 
@@ -101,6 +101,7 @@ flowchart TD
 
 ## 관련 개념 및 엔티티
 
+- **생명주기·Effect 심화**: [[React Component Lifecycle and Effects]], [[React Native Rendering and App Lifecycle]], [[렌더링 첫걸음 00 - 로드맵|렌더링 첫걸음 시리즈]]
 - **상위/연관 개념**: [[Virtual DOM and Reconciliation from Scratch]], [[React Fiber and Reconciliation]], [[Web React vs React Native Shared Core and Differences]], [[Offline-First and Mobile State Management]]
 - **구현 기술/엔티티**: [[React]], [[React Native]], [[TanStack Query and Zustand]]
 - **출처 문헌**: [[2024-React in Depth]] (Ch 2–3, Ch 5–6), [[2024-Fluent React]] (Ch 5), [[2021-React Hooks in Action]] (Ch 1–13), [[2021-Designing React Hooks the Right Way]] (Ch 2–9), [[2023-Do it! 리액트 모던 웹 개발 with 타입스크립트]] (Ch 04), [[2021-Do it! 리액트 네이티브 앱 프로그래밍]] (Ch 04–05), [[2025-Advanced Front-End Development]] (Ch 9, Ch 19), [[2026-React Application Architecture for Production Second Edition]] (Ch 8), [[2026-Full-Stack React TypeScript and Node 2nd Edition]] (Ch 5)
