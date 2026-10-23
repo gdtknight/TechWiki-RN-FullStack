@@ -129,7 +129,7 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - [[JS 첫걸음 10 - 스코프와 클로저]] — 집·동네 비유로 배우는 전역·지역·블록 스코프, 스코프 체인과 렉시컬 스코프, 같은 이름 가리기, 선언 없는 대입과 엄격 모드, 소풍 가방 비유의 클로저(카운터·저금통·`makeAdder`), 반복문 `var` 클로저 함정과 `let` 해결, IIFE 맛보기.
 - [[JS 첫걸음 11 - 비동기 기초]] — 식당 진동벨 비유로 배우는 동기 vs 비동기, `setTimeout`의 실행 순서, Promise 세 상태와 `.then`/`.catch`, `async`/`await`(그 함수만 기다림), `fetch` 모양, `try...catch...finally`, 이벤트 루프 간단 모형.
 - [[JS 첫걸음 12 - 모듈과 다음 단계]] — 레고 정리함 비유로 배우는 모듈, Node.js로 파일 실행, `export`/`import`, 이름 붙은 내보내기 vs 기본 내보내기, 모듈 스코프와 엄격 모드, 시리즈 회고와 이 위키에서 이어 읽을 페이지(TypeScript → React → React Native·Expo).
-- [[렌더링 첫걸음 00 - 로드맵]] — 브라우저 렌더링 → React 생명주기 → React Native 생명주기를 잇는 레슨 시리즈(00–09, 각 레슨에 "더 깊이" 심화 절).
+- [[렌더링 첫걸음 00 - 로드맵]] — 브라우저 렌더링 → React 생명주기 → React Native 생명주기를 잇는 레슨 시리즈(00–09와 보충 10, 각 레슨에 "더 깊이" 심화 절).
 - [[렌더링 첫걸음 01 - 브라우저는 화면을 어떻게 그릴까]] — 공장 비유로 배우는 렌더링 파이프라인 6단계, DOM, 레이아웃·페인트·합성, 렌더링 차단, 다시 그리기.
 - [[렌더링 첫걸음 02 - 프레임과 이벤트 루프]] — 플립북 비유의 프레임과 16.7 ms 예산, 이벤트 루프 속 렌더링, 긴 작업과 양보, INP, `requestAnimationFrame`.
 - [[렌더링 첫걸음 03 - React 첫 만남]] — 컴포넌트·JSX·props·state, 지역 변수와 state의 차이, 스냅샷과 갱신 함수, `key`.
@@ -139,6 +139,7 @@ LLM 에이전트는 **Ingest / Query / Lint** 작업 시 항상 이 인덱스를
 - [[렌더링 첫걸음 07 - React Native는 화면을 어떻게 그릴까]] — Render → Commit(Yoga) → Mount, Shadow Tree 구조 공유, UI·JS 스레드와 두 프레임 레이트, 동기 `useLayoutEffect`, View Flattening.
 - [[렌더링 첫걸음 08 - 앱과 화면의 생명 주기]] — 컴포넌트·화면·앱 세 겹 생명 주기, `AppState`, 언마운트되지 않는 화면, `useFocusEffect`·`useIsFocused`, Page Visibility API.
 - [[렌더링 첫걸음 09 - 버튼 하나를 누르면]] — 클릭 한 번의 웹·RN 타임라인(실행 순서 실험), INP 세 구간, 웹·RN 성능 체크리스트, 시리즈 정리.
+- [[렌더링 첫걸음 10 - 자식이 부모 함수를 부를 때]] — 보충 레슨: 리모컨·초인종 비유로 배우는 함수 props, `fn`과 `fn()`의 차이(렌더 중 호출 실험), `handleXxx`/`onXxx`/`onPress` 세 이름, 자식이 값을 올려 보내기와 state 끌어올리기, 심화로 `memo`+`useCallback` 실험과 의존성을 빠뜨린 함수가 지운 항목을 되살리는 실험.
 - [[React and React Native Internal Implementation Deep Dive]] — Fiber Reconciler 데이터 구조(Double Buffering, workLoop), Hooks Dispatcher/연결 리스트, `react-reconciler` 호스트 분리, 구형 Bridge 병목 및 New Architecture(JSI, Fabric, Yoga C++ Shadow Tree, Hermes AOT) 심층 분석.
 
 ---

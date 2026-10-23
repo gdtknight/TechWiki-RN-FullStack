@@ -14,7 +14,7 @@ tags:
   - beginner
   - rendering-first-steps
 created: 2026-10-21
-updated: 2026-10-21
+updated: 2026-10-24
 ---
 
 # 렌더링 첫걸음 03 - React 첫 만남
@@ -134,6 +134,7 @@ function App() {
 - 컴포넌트는 props를 **객체 하나**로 받습니다. `{ name, age = 10 }`은 그 객체에서 꺼내면서 기본값을 정하는 문법입니다 ([[JS 첫걸음 07 - 함수|JS 첫걸음 07]]의 기본값과 같은 생각).
 - 숫자처럼 문자열이 아닌 값은 `age={12}`처럼 **중괄호**로 건넵니다.
 - props는 읽기만 합니다: "Props are read-only snapshots in time: every render receives a new version of props." (*Passing Props*)
+- props로 **함수**도 넘길 수 있습니다. 자식이 부모의 함수를 불러 부모의 state를 바꾸는 방법은 보충 레슨 [[렌더링 첫걸음 10 - 자식이 부모 함수를 부를 때|10]]에서 자세히 봅니다.
 
 ---
 

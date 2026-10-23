@@ -465,3 +465,10 @@
   - 맞는 것: `disallowedTools` 적용 순서, 에이전트 저장 위치 5곳 우선순위, 팀 3–5명, 스킬 목록 예산 1%.
 - **공식 문서 대조 — Anthropic 가격·캐싱**: 하네스 책 가격표의 Opus 4.6($15/$75)·Haiku 4.5($0.80/$4)는 공식($5/$25, $1/$5)과 다름(각각 Opus 4.1·Haiku 3.5 가격). Cost Playbook의 `pricing.yaml`도 Haiku 4.5를 $0.80/$4, ID `claude-haiku-4-5-20250514`로 씀(공식 ID `claude-haiku-4-5-20251001`). 캐시 TTL 5분·Sonnet 4.6 최소 1,024토큰·배치 50%는 맞음. 이후 바뀐 것: 1시간 TTL, 자동 캐싱, 모델별 최소 길이(512–4,096), 5.x 세대의 더 큰 캐시 할인, extended thinking deprecated, 컨텍스트 1M.
 - **미확인으로 남김**: 하네스 책의 "클로드 코드 내부 문서/오케스트레이션 공식 가이드" 인용과 292개 에이전트·메시지 50개 제한 사례(공식 문서에서 찾지 못함), 스킬 목록 "대체 한도 약 8,000자", LLM 판정 모델에 `temperature=0`을 쓰면 결정적이라는 권고(현재 API 레퍼런스에서 `temperature` 항목을 찾지 못함), 각 책의 외부 사례·설문 수치(원 출처 미확인).
+
+## [2026-10-24] query | 렌더링 첫걸음 10 - 자식이 부모 함수를 부를 때 (보충 레슨)
+- **계기**: "자식 컴포넌트로 전달한 부모 함수를 호출하는 코드가 헷갈린다"는 질문에 답한 내용을 레슨으로 정리함.
+- **생성**: [[렌더링 첫걸음 10 - 자식이 부모 함수를 부를 때]]
+- **갱신**: [[렌더링 첫걸음 00 - 로드맵]] (10행 추가), [[렌더링 첫걸음 09 - 버튼 하나를 누르면]] (다음 링크), [[렌더링 첫걸음 03 - React 첫 만남]] (4절에서 레슨 10으로 연결), `index.md`
+- **근거**: react.dev *Responding to Events*·*Sharing State Between Components*·*useCallback*·*memo*, reactnative.dev *Pressable*(`onPress` 타입 `({nativeEvent: PressEvent}) => void`)·*TextInput*(`onChangeText`).
+- **실행 확인**: Node.js에서 함수를 값으로 담기·콜백. React 19.3.1 + jsdom에서 부모 함수 호출 순서, `onClick={fn(값)}`이 클릭 없이 렌더 중에 호출됨, `memo` 자식이 매번 새 함수면 다시 렌더되고 `useCallback`이면 건너뜀, `useCallback` 의존성에서 `items`를 빠뜨리면 두 번째 삭제 때 지운 항목이 되살아남(이전 값 함수 `prev => …`는 정상). React Native 예제는 실행하지 않음.
