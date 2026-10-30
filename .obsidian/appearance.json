@@ -1,1 +1,6 @@
-{}
+{
+  "interfaceFontFamily": "",
+  "enabledCssSnippets": [
+    "fonts-comic-d2coding"
+  ]
+}
